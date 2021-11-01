@@ -1,24 +1,23 @@
 package com.llw.mvvm.viewmodels;
 
-import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.llw.mvvm.model.User;
+import com.llw.mvvm.model.BiYingResponse;
+import com.llw.mvvm.repository.MainRepository;
 
 /**
+ * 主页面ViewModel
+ *
  * @author llw
  * @description MainViewModel
- * @date 2021/10/18 10:20
  */
 public class MainViewModel extends ViewModel {
 
-    public MutableLiveData<User> user;
+    public LiveData<BiYingResponse> biying;
 
-    public MutableLiveData<User> getUser(){
-        if(user == null){
-            user = new MutableLiveData<>();
-        }
-        return user;
+    public void getBiying(){
+        biying = new MainRepository().getBiYing();
     }
 
 }
