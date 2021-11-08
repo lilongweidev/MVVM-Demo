@@ -26,7 +26,7 @@ android {
     // 自定义打包名称
     android.applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = "MVVM-Demo_2.apk"
+            outputFileName = "MVVM-Demo_3.apk"
         }
     }
 
@@ -62,4 +62,11 @@ dependencies {
     //图片加载框架
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    //Room数据库
+    implementation 'androidx.room:room-runtime:2.3.0'
+    annotationProcessor 'androidx.room:room-compiler:2.3.0'
+    //Room 支持RxJava2
+    implementation 'androidx.room:room-rxjava2:2.3.0'
+    //腾讯MMKV
+    implementation 'com.tencent:mmkv:1.2.11'
 }

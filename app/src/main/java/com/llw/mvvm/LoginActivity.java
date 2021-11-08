@@ -6,18 +6,19 @@ import androidx.lifecycle.MutableLiveData;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.llw.mvvm.databinding.ActivityLoginBinding;
-import com.llw.mvvm.databinding.ActivityMainBinding;
 import com.llw.mvvm.model.User;
+import com.llw.mvvm.utils.MVUtils;
 import com.llw.mvvm.viewmodels.LoginViewModel;
-import com.llw.mvvm.viewmodels.MainViewModel;
 
 public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding dataBinding;
     private LoginViewModel loginViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
             Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(LoginActivity.this,MainActivity.class));
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
         });
     }
 }

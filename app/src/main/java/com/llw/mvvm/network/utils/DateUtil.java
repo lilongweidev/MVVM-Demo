@@ -35,7 +35,7 @@ public class DateUtil {
     public static final String THURSDAY = "星期四";
     public static final String FRIDAY = "星期五";
     public static final String SATURDAY = "星期六";
-    public static final String[] weekDays = {SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY};
+    public static final String[] WEEK_DAYS = {SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY};
 
     /**
      * 获取标准时间
@@ -182,6 +182,22 @@ public class DateUtil {
     }
 
     /**
+     * 获取第二天凌晨0点时间戳
+     * @return
+     */
+    public static long getMillisNextEarlyMorning() {
+        Calendar cal = Calendar.getInstance();
+        //日期加1
+        cal.add(Calendar.DAY_OF_YEAR, 1);
+        //时间设定到0点整
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        return cal.getTimeInMillis();
+    }
+
+    /**
      * 将时间转换为时间戳
      *
      * @param time 例如 2021-07-01 10:44:11
@@ -220,7 +236,7 @@ public class DateUtil {
         if (index < 0) {
             index = 0;
         }
-        return weekDays[index];
+        return WEEK_DAYS[index];
     }
 
     /**
@@ -246,7 +262,7 @@ public class DateUtil {
                 cal.setTime(new Date(date.getTime()));
             }
         }
-        return weekDays[cal.get(Calendar.DAY_OF_WEEK) - 1];
+        return WEEK_DAYS[cal.get(Calendar.DAY_OF_WEEK) - 1];
     }
 
     /**

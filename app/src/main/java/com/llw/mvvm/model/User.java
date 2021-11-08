@@ -8,7 +8,6 @@ import com.llw.mvvm.BR;
 /**
  * @author llw
  * @description User
- * @date 2021/10/26 9:46
  */
 public class User extends BaseObservable {
 
