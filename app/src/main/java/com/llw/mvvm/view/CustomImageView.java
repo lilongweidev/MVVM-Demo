@@ -1,7 +1,9 @@
 package com.llw.mvvm.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
@@ -9,7 +11,10 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.databinding.BindingAdapter;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.llw.mvvm.BaseApplication;
+import com.llw.mvvm.PictureViewActivity;
+import com.llw.mvvm.model.WallPaperResponse;
 import com.llw.mvvm.network.utils.KLog;
 
 /**
@@ -17,11 +22,12 @@ import com.llw.mvvm.network.utils.KLog;
  * @author llw
  * @description CustomImageVIew
  */
-public class CustomImageView extends AppCompatImageView {
+public class CustomImageView extends ShapeableImageView {
 
     public CustomImageView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
+
     /**
      * 必应壁纸  因为拿到的url不完整，因此需要做一次地址拼接
      * @param imageView 图片视图

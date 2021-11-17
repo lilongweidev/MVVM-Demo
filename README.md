@@ -1,6 +1,13 @@
 # MVVM-Demo
 MVVM-Demo  
 
+## Step4
+
+Android MVVM框架搭建（四）RecyclerVIew + ViewPager2 + BaseQuickAdapter
+
+对应的apk:MVVM-Demo_4.apk
+
+
 ## Step3
 
 Android MVVM框架搭建（三）MMKV + Room + RxJava2

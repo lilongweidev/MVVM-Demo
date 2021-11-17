@@ -2,8 +2,12 @@ package com.llw.mvvm.repository;
 
 import android.annotation.SuppressLint;
 import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
+
 import com.llw.mvvm.BaseApplication;
+import com.llw.mvvm.db.bean.WallPaper;
+import com.llw.mvvm.model.WallPaperResponse;
 import com.llw.mvvm.utils.Constant;
 import com.llw.mvvm.api.ApiService;
 import com.llw.mvvm.db.bean.Image;
@@ -19,26 +23,30 @@ import java.util.List;
 
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * Main存储库 用于对数据进行处理
  *
  * @author llw
  */
+@SuppressLint("CheckResult")
 public class MainRepository {
 
     private static final String TAG = MainRepository.class.getSimpleName();
+    /**
+     * 必应数据
+     */
     final MutableLiveData<BiYingResponse> biyingImage = new MutableLiveData<>();
+    /**
+     * 热门壁纸数据
+     */
+    final MutableLiveData<WallPaperResponse> wallPaper = new MutableLiveData<>();
 
     public MutableLiveData<BiYingResponse> getBiYing() {
         //今日此接口是否已请求
         if (MVUtils.getBoolean(Constant.IS_TODAY_REQUEST)) {
-            if(DateUtil.getTimestamp() <= MVUtils.getLong(Constant.REQUEST_TIMESTAMP)){
+            if (DateUtil.getTimestamp() <= MVUtils.getLong(Constant.REQUEST_TIMESTAMP)) {
                 //当前时间未超过次日0点，从本地获取
                 getLocalDB();
             } else {
@@ -53,10 +61,50 @@ public class MainRepository {
     }
 
     /**
+     * 获取壁纸数据
+     * @return wallPaper
+     */
+    public MutableLiveData<WallPaperResponse> getWallPaper() {
+        //今日此接口是否已经请求
+        if (MVUtils.getBoolean(Constant.IS_TODAY_REQUEST_WALLPAPER)) {
+            if (DateUtil.getTimestamp() <= MVUtils.getLong(Constant.REQUEST_TIMESTAMP_WALLPAPER)) {
+                getLocalDBForWallPaper();
+            } else {
+                requestNetworkApiForWallPaper();
+            }
+        } else {
+            requestNetworkApiForWallPaper();
+        }
+        return wallPaper;
+    }
+
+    /**
+     * 从本地数据库获取热门壁纸
+     */
+    private void getLocalDBForWallPaper() {
+        Log.d(TAG, "getLocalDBForWallPaper: 从本地数据库获取 热门壁纸");
+        WallPaperResponse wallPaperResponse = new WallPaperResponse();
+        WallPaperResponse.ResBean resBean = new WallPaperResponse.ResBean();
+        List<WallPaperResponse.ResBean.VerticalBean> verticalBeanList = new ArrayList<>();
+        Flowable<List<WallPaper>> listFlowable = BaseApplication.getDb().wallPaperDao().getAll();
+        CustomDisposable.addDisposable(listFlowable, wallPapers -> {
+            for (WallPaper paper : wallPapers) {
+                WallPaperResponse.ResBean.VerticalBean verticalBean = new WallPaperResponse.ResBean.VerticalBean();
+                verticalBean.setImg(paper.getImg());
+                verticalBeanList.add(verticalBean);
+            }
+            resBean.setVertical(verticalBeanList);
+            wallPaperResponse.setRes(resBean);
+            wallPaper.postValue(wallPaperResponse);
+        });
+    }
+
+
+    /**
      * 从本地数据库获取
      */
     private void getLocalDB() {
-        Log.d(TAG, "getLocalDB: 从本地数据库获取");
+        Log.d(TAG, "getLocalDB: 从本地数据库获取 必应壁纸");
         BiYingResponse biYingImgResponse = new BiYingResponse();
         //从数据库获取
         Flowable<Image> imageFlowable = BaseApplication.getDb().imageDao().queryById(1);
@@ -78,10 +126,9 @@ public class MainRepository {
     /**
      * 从网络上请求数据
      */
-    @SuppressLint("CheckResult")
     private void requestNetworkApi() {
-        Log.d(TAG, "requestNetworkApi: 从网络获取");
-        ApiService apiService = NetworkApi.createService(ApiService.class);
+        Log.d(TAG, "requestNetworkApi: 从网络获取 必应壁纸");
+        ApiService apiService = NetworkApi.createService(ApiService.class, 0);
         apiService.biying().compose(NetworkApi.applySchedulers(new BaseObserver<BiYingResponse>() {
             @Override
             public void onSuccess(BiYingResponse biYingImgResponse) {
@@ -98,19 +145,62 @@ public class MainRepository {
     }
 
     /**
-     * 保存数据
+     * 保存必应壁纸数据
      */
     private void saveImageData(BiYingResponse biYingImgResponse) {
         //记录今日已请求
-        MVUtils.put(Constant.IS_TODAY_REQUEST,true);
+        MVUtils.put(Constant.IS_TODAY_REQUEST, true);
         //记录此次请求的时最晚有效时间戳
-        MVUtils.put(Constant.REQUEST_TIMESTAMP,DateUtil.getMillisNextEarlyMorning());
+        MVUtils.put(Constant.REQUEST_TIMESTAMP, DateUtil.getMillisNextEarlyMorning());
         BiYingResponse.ImagesBean bean = biYingImgResponse.getImages().get(0);
         //保存到数据库
         Completable insert = BaseApplication.getDb().imageDao().insertAll(
                 new Image(1, bean.getUrl(), bean.getUrlbase(), bean.getCopyright(),
                         bean.getCopyrightlink(), bean.getTitle()));
         //RxJava处理Room数据存储
-        CustomDisposable.addDisposable(insert, () -> Log.d(TAG, "saveImageData: 插入数据成功"));
+        CustomDisposable.addDisposable(insert, () -> Log.d(TAG, "saveImageData: 必应数据保存成功"));
+    }
+
+    /**
+     * 保存热门壁纸数据
+     */
+    private void saveWallPaper(WallPaperResponse wallPaperResponse) {
+        MVUtils.put(Constant.IS_TODAY_REQUEST_WALLPAPER, true);
+        MVUtils.put(Constant.REQUEST_TIMESTAMP_WALLPAPER, DateUtil.getMillisNextEarlyMorning());
+
+        Completable deleteAll = BaseApplication.getDb().wallPaperDao().deleteAll();
+        CustomDisposable.addDisposable(deleteAll, () -> {
+            Log.d(TAG, "saveWallPaper: 删除数据成功");
+            List<WallPaper> wallPaperList = new ArrayList<>();
+            for (WallPaperResponse.ResBean.VerticalBean verticalBean : wallPaperResponse.getRes().getVertical()) {
+                wallPaperList.add(new WallPaper(verticalBean.getImg()));
+            }
+            //保存到数据库
+            Completable insertAll = BaseApplication.getDb().wallPaperDao().insertAll(wallPaperList);
+            Log.d(TAG, "saveWallPaper: 插入数据：" + wallPaperList.size() + "条");
+            //RxJava处理Room数据存储
+            CustomDisposable.addDisposable(insertAll, () -> Log.d(TAG, "saveWallPaper: 热门天气数据保存成功"));
+        });
+    }
+
+    /**
+     * 从网络获取壁纸数据
+     */
+    private void requestNetworkApiForWallPaper() {
+        Log.d(TAG, "requestNetworkApiForWallPaper: 从网络获取 热门壁纸");
+        NetworkApi.createService(ApiService.class, 1).
+                wallPaper().compose(NetworkApi.applySchedulers(new BaseObserver<WallPaperResponse>() {
+            @Override
+            public void onSuccess(WallPaperResponse wallPaperResponse) {
+                //保存本地数据
+                saveWallPaper(wallPaperResponse);
+                wallPaper.setValue(wallPaperResponse);
+            }
+
+            @Override
+            public void onFailure(Throwable e) {
+                KLog.e("WallPaper Error: " + e.toString());
+            }
+        }));
     }
 }

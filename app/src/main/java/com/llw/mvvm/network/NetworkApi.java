@@ -22,6 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * 网络Api
+ *
  * @author llw
  * @description NetworkApi
  */
@@ -31,10 +32,11 @@ public class NetworkApi {
      * 获取APP运行状态及版本信息，用于日志打印
      */
     private static INetworkRequiredInfo iNetworkRequiredInfo;
+
     /**
      * API访问地址
      */
-    private static final String BASE_URL = "https://cn.bing.com";
+    private static String BASE_URL = null;
 
     private static OkHttpClient okHttpClient;
 
@@ -50,8 +52,30 @@ public class NetworkApi {
     /**
      * 创建serviceClass的实例
      */
-    public static <T> T createService(Class<T> serviceClass) {
+    public static <T> T createService(Class<T> serviceClass, int type) {
+        //设置Url类型
+        setUrlType(type);
         return getRetrofit(serviceClass).create(serviceClass);
+    }
+
+    /**
+     * 设置访问Url类型
+     *
+     * @param type 0 必应 1 壁纸列表
+     */
+    private static void setUrlType(int type) {
+        switch (type) {
+            case 0:
+                //必应
+                BASE_URL = "https://cn.bing.com";
+                break;
+            case 1:
+                //热门壁纸
+                BASE_URL = "http://service.picasso.adesk.com";
+                break;
+            default:
+                break;
+        }
     }
 
     /**

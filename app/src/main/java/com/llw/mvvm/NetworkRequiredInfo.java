@@ -23,6 +23,7 @@ public class NetworkRequiredInfo implements INetworkRequiredInfo {
     public String getAppVersionName() {
         return BuildConfig.VERSION_NAME;
     }
+
     /**
      * 版本号
      */
