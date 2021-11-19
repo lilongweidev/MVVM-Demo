@@ -1,4 +1,4 @@
-package com.llw.mvvm.adapter;
+package com.llw.mvvm.ui.adapter;
 
 import androidx.databinding.DataBindingUtil;
 

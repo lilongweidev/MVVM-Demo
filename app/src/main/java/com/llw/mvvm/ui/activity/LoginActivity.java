@@ -1,20 +1,26 @@
-package com.llw.mvvm;
+package com.llw.mvvm.ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.MutableLiveData;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
+import com.llw.mvvm.R;
 import com.llw.mvvm.databinding.ActivityLoginBinding;
 import com.llw.mvvm.model.User;
+import com.llw.mvvm.utils.Constant;
 import com.llw.mvvm.utils.MVUtils;
 import com.llw.mvvm.viewmodels.LoginViewModel;
 
-public class LoginActivity extends AppCompatActivity {
+/**
+ * 登录页面
+ * @author llw
+ */
+public class LoginActivity extends BaseActivity {
 
     private ActivityLoginBinding dataBinding;
     private LoginViewModel loginViewModel;
@@ -24,7 +30,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //数据绑定视图
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
-
         loginViewModel = new LoginViewModel();
         //Model → View
         User user = new User("admin", "123456");
@@ -35,15 +40,17 @@ public class LoginActivity extends AppCompatActivity {
 
         dataBinding.btnLogin.setOnClickListener(v -> {
             if (loginViewModel.user.getValue().getAccount().isEmpty()) {
-                Toast.makeText(LoginActivity.this, "请输入账号", Toast.LENGTH_SHORT).show();
+                showMsg("请输入账号");
                 return;
             }
             if (loginViewModel.user.getValue().getPwd().isEmpty()) {
-                Toast.makeText(LoginActivity.this, "请输入密码", Toast.LENGTH_SHORT).show();
+                showMsg("请输入密码");
                 return;
             }
-            Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            //记录已经登录过
+            MVUtils.put(Constant.IS_LOGIN,true);
+            showMsg("登录成功");
+            jumpActivity(MainActivity.class);
         });
     }
 }

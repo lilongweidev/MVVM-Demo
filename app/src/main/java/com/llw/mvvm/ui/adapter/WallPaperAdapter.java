@@ -1,4 +1,4 @@
-package com.llw.mvvm.adapter;
+package com.llw.mvvm.ui.adapter;
 
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -7,10 +7,9 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.llw.mvvm.PictureViewActivity;
+import com.llw.mvvm.ui.activity.PictureViewActivity;
 import com.llw.mvvm.R;
 import com.llw.mvvm.databinding.ItemWallPaperBinding;
 import com.llw.mvvm.model.WallPaperResponse;

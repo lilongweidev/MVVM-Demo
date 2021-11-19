@@ -18,4 +18,7 @@ public class Constant {
     //今日请求热门壁纸的时间戳
     public static final String REQUEST_TIMESTAMP_WALLPAPER = "wallpaperRequestTimestamp";
 
+    //是否登录过
+    public static final String IS_LOGIN = "isLogin";
+
 }

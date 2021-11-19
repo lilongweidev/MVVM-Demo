@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/news_fragment">
+
+    <fragment
+        android:id="@+id/news_fragment"
+        android:name="com.llw.mvvm.ui.fragment.NewsFragment"
+        android:label="news_fragment"
+        tools:layout="@layout/news_fragment" />
+    <fragment
+        android:id="@+id/video_fragment"
+        android:name="com.llw.mvvm.ui.fragment.VideoFragment"
+        android:label="video_fragment"
+        tools:layout="@layout/video_fragment" />
+</navigation>

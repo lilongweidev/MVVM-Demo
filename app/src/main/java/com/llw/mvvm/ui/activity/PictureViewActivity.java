@@ -1,23 +1,15 @@
-package com.llw.mvvm;
+package com.llw.mvvm.ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
-import com.llw.mvvm.adapter.ImageAdapter;
+import com.llw.mvvm.R;
+import com.llw.mvvm.ui.adapter.ImageAdapter;
 import com.llw.mvvm.databinding.ActivityPictureViewBinding;
-import com.llw.mvvm.db.bean.WallPaper;
 import com.llw.mvvm.viewmodels.PictureViewModel;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
 
 /**
  * 图片查看

@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context=".MainActivity">
+        tools:context=".ui.activity.MainActivity">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbar_layout"
@@ -55,6 +55,7 @@
         </com.google.android.material.appbar.AppBarLayout>
         <!--嵌套滑动布局-->
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="true"
@@ -68,5 +69,18 @@
                 android:layout_height="wrap_content"
                 android:padding="5dp" />
         </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="20dp"
+            app:fabSize="auto"
+            android:onClick="toHome"
+            android:background="@color/purple_500"
+            android:src="@mipmap/ic_home"
+            app:backgroundTint="@color/purple_500"
+            tools:ignore="UsingOnClickInXml" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

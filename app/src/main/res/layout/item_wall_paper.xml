@@ -11,7 +11,7 @@
 
         <variable
             name="onClick"
-            type="com.llw.mvvm.adapter.WallPaperAdapter.ClickBinding" />
+            type="com.llw.mvvm.ui.adapter.WallPaperAdapter.ClickBinding" />
     </data>
 
     <LinearLayout

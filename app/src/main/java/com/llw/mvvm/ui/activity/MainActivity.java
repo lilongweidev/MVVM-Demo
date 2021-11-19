@@ -1,23 +1,24 @@
-package com.llw.mvvm;
+package com.llw.mvvm.ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.NestedScrollView;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.android.material.appbar.AppBarLayout;
-import com.llw.mvvm.adapter.WallPaperAdapter;
+import com.llw.mvvm.R;
+import com.llw.mvvm.ui.adapter.WallPaperAdapter;
 import com.llw.mvvm.databinding.ActivityMainBinding;
-import com.llw.mvvm.model.WallPaperResponse;
 import com.llw.mvvm.viewmodels.MainViewModel;
 
 /**
  * 主页面
+ *
  * @author llw
  */
 public class MainActivity extends AppCompatActivity {
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                     scrollRange = appBarLayout.getTotalScrollRange();
                 }
                 if (scrollRange + verticalOffset == 0) {//收缩时
-                    dataBinding.toolbarLayout.setTitle("MVVM-Demo");
+                    dataBinding.toolbarLayout.setTitle("每日壁纸");
                     isShow = true;
                 } else if (isShow) {//展开时
                     dataBinding.toolbarLayout.setTitle("");
@@ -67,5 +68,19 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        //上下滑动监听
+        dataBinding.scrollView.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
+            if (scrollY > oldScrollY) {
+                //上滑
+                dataBinding.fabHome.hide();
+            } else {
+                //下滑
+                dataBinding.fabHome.show();
+            }
+        });
+    }
+
+    public void toHome(View view) {
+        startActivity(new Intent(this, HomeActivity.class));
     }
 }

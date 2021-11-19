@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel;
 import com.llw.mvvm.model.BiYingResponse;
 import com.llw.mvvm.model.WallPaperResponse;
 import com.llw.mvvm.repository.MainRepository;
+import com.llw.mvvm.ui.activity.MainActivity;
 
 
 /**
@@ -12,7 +13,7 @@ import com.llw.mvvm.repository.MainRepository;
  *
  * @author llw
  * @description MainViewModel
- * {@link com.llw.mvvm.MainActivity}
+ * {@link MainActivity}
  */
 public class MainViewModel extends ViewModel {
 
