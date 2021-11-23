@@ -14,7 +14,7 @@ import io.reactivex.Completable;
 import io.reactivex.Flowable;
 
 /**
- * 操作数据类
+ * 图片数据操作
  * @author llw
  */
 @Dao

@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * 视频列表适配器
+ *
  * @author llw
  */
 public class VideoAdapter extends BaseQuickAdapter<VideoResponse.ResultBean, BaseDataBindingHolder<ItemVideoBinding>> {
@@ -26,7 +27,9 @@ public class VideoAdapter extends BaseQuickAdapter<VideoResponse.ResultBean, Bas
     @Override
     protected void convert(@NotNull BaseDataBindingHolder<ItemVideoBinding> bindingHolder, VideoResponse.ResultBean dataBean) {
         ItemVideoBinding binding = bindingHolder.getDataBinding();
-        binding.setVideo(dataBean);
-        binding.executePendingBindings();
+        if (binding != null) {
+            binding.setVideo(dataBean);
+            binding.executePendingBindings();
+        }
     }
 }

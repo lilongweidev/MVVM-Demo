@@ -15,11 +15,13 @@ import java.util.List;
  * @author llw
  * 作用于 {@link PictureViewActivity}
  */
-public class PictureViewModel extends ViewModel {
+public class PictureViewModel extends BaseViewModel {
 
     public LiveData<List<WallPaper>> wallPaper;
 
     public void getWallPaper() {
-        wallPaper = new PictureRepository().getWallPaper();
+        PictureRepository pictureRepository = new PictureRepository();
+        failed = pictureRepository.failed;
+        wallPaper = pictureRepository.getWallPaper();
     }
 }

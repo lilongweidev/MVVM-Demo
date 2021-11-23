@@ -10,9 +10,7 @@ import com.llw.mvvm.repository.NewsRepository;
  * @author llw
  * {@link com.llw.mvvm.ui.fragment.NewsFragment}
  */
-public class NewsViewModel extends ViewModel {
-
-    public LiveData<String> failed;
+public class NewsViewModel extends BaseViewModel {
 
     public LiveData<NewsResponse> news;
 

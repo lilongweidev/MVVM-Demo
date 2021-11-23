@@ -3,10 +3,15 @@ MVVM-Demo
 
 ## Step4
 
-Android MVVM框架搭建（四）RecyclerVIew + ViewPager2 + BaseQuickAdapter
+Android MVVM框架搭建（五）Navigation + Fragment + BottomNavigationView
+
+对应的apk:MVVM-Demo_5.apk
+
+## Step4
+
+Android MVVM框架搭建（四）RecyclerView + ViewPager2 + BaseQuickAdapter
 
 对应的apk:MVVM-Demo_4.apk
-
 
 ## Step3
 

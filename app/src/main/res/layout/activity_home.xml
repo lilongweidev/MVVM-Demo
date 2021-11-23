@@ -32,7 +32,6 @@
             android:layout_height="match_parent"
             android:layout_above="@+id/bottom_navigation"
             android:layout_below="@+id/toolbar"
-            app:defaultNavHost="true"
             app:navGraph="@navigation/nav_graph" />
 
         <!--底部导航-->

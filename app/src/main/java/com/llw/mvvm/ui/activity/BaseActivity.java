@@ -1,16 +1,11 @@
 package com.llw.mvvm.ui.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsControllerCompat;
 
 /**
  * 基础Activity
@@ -19,33 +14,43 @@ import androidx.core.view.WindowInsetsControllerCompat;
  */
 public class BaseActivity extends AppCompatActivity {
 
+    protected AppCompatActivity context;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.context = this;
     }
 
     protected void showMsg(CharSequence msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
     }
 
     protected void showLongMsg(CharSequence msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+        Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
     }
 
-    protected void jumpActivity(Class<?> clazz) {
-        startActivity(new Intent(this, clazz));
+    /**
+     * 跳转页面
+     * @param clazz 目标页面
+     */
+    protected void jumpActivity(final Class<?> clazz) {
+        startActivity(new Intent(context, clazz));
     }
 
-    protected void setStatusBar(Activity activity, boolean isLight) {
-        View decor = getWindow().getDecorView();
-        WindowInsetsControllerCompat controller = ViewCompat.getWindowInsetsController(decor);
-        if(controller != null){
-            boolean appearanceLightStatusBars = controller.isAppearanceLightStatusBars();
-            Log.d("TAG", "setStatusBar: "+appearanceLightStatusBars);
-            controller.setAppearanceLightStatusBars(isLight);
-        }
+    /**
+     * 跳转页面并关闭当前页面
+     * @param clazz 目标页面
+     */
+    protected void jumpActivityFinish(final Class<?> clazz) {
+        startActivity(new Intent(context, clazz));
+        finish();
     }
 
+    /**
+     * 状态栏文字图标颜色
+     * @param dark 深色 false 为浅色
+     */
     protected void setStatusBar(boolean dark) {
         View decor = getWindow().getDecorView();
         if (dark) {

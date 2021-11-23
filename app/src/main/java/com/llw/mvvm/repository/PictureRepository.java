@@ -8,6 +8,7 @@ import com.llw.mvvm.db.bean.WallPaper;
 import java.util.List;
 
 import io.reactivex.Flowable;
+import io.reactivex.functions.Consumer;
 
 /**
  * 获取PictureViewActivity所需数据
@@ -19,9 +20,17 @@ public class PictureRepository {
 
     private final MutableLiveData<List<WallPaper>> wallPaper = new MutableLiveData<>();
 
+    public final MutableLiveData<String> failed = new MutableLiveData<>();
+
     public MutableLiveData<List<WallPaper>> getWallPaper() {
         Flowable<List<WallPaper>> listFlowable = BaseApplication.getDb().wallPaperDao().getAll();
-        CustomDisposable.addDisposable(listFlowable, wallPaper::postValue);
+        CustomDisposable.addDisposable(listFlowable, wallPapers -> {
+            if (wallPapers.size() > 0) {
+                wallPaper.postValue(wallPapers);
+            } else {
+                failed.postValue("暂无数据");
+            }
+        });
         return wallPaper;
     }
 }

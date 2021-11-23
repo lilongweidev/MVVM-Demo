@@ -54,10 +54,5 @@ public class HomeActivity extends BaseActivity {
             }
             return true;
         });
-        //通过setupWithNavController将底部导航和导航控制器进行绑定
-       // NavigationUI.setupWithNavController(binding.bottomNavigation, navController);
-
     }
-
-
 }

@@ -21,7 +21,7 @@ import com.llw.mvvm.viewmodels.MainViewModel;
  *
  * @author llw
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private ActivityMainBinding dataBinding;
     private MainViewModel mainViewModel;
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        //上下滑动监听
+        //页面上下滑动监听
         dataBinding.scrollView.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
             if (scrollY > oldScrollY) {
                 //上滑
@@ -81,6 +81,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void toHome(View view) {
-        startActivity(new Intent(this, HomeActivity.class));
+        jumpActivity(HomeActivity.class);
     }
 }

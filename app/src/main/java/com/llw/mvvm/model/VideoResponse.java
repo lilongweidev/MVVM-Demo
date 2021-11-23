@@ -38,7 +38,7 @@ public class VideoResponse {
         this.error_code = error_code;
     }
 
-    public class ResultBean {
+    public static class ResultBean {
         private String title;
         private String share_url;
         private String author;

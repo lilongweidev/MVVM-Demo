@@ -27,9 +27,8 @@ import com.llw.mvvm.viewmodels.NewsViewModel;
  * 新闻
  * @author llw
  */
-public class NewsFragment extends Fragment {
+public class NewsFragment extends BaseFragment {
 
-    private NewsViewModel mViewModel;
     private NewsFragmentBinding binding;
 
     public static NewsFragment newInstance() {
@@ -47,14 +46,14 @@ public class NewsFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        mViewModel = new ViewModelProvider(this).get(NewsViewModel.class);
+        NewsViewModel mViewModel = new ViewModelProvider(this).get(NewsViewModel.class);
         //获取新闻数据
         mViewModel.getNews();
-        binding.rv.setLayoutManager(new LinearLayoutManager(requireActivity()));
+        binding.rv.setLayoutManager(new LinearLayoutManager(context));
         //数据刷新
-        mViewModel.news.observe(requireActivity(),newsResponse ->
+        mViewModel.news.observe(context, newsResponse ->
                 binding.rv.setAdapter(new NewsAdapter(newsResponse.getResult().getData())));
-        mViewModel.failed.observe(requireActivity(), failed -> Toast.makeText(requireActivity(), failed, Toast.LENGTH_SHORT).show());
+        mViewModel.failed.observe(context, this::showMsg);
     }
 
 }

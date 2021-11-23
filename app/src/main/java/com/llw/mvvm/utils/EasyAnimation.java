@@ -6,9 +6,9 @@ import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 
 /**
+ * 简易动画
  * @author llw
  * @description EasyAnimation
- * @date 2021/11/19 11:10
  */
 public class EasyAnimation {
 

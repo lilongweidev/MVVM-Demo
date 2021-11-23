@@ -43,6 +43,21 @@ public class MainRepository {
      */
     final MutableLiveData<WallPaperResponse> wallPaper = new MutableLiveData<>();
 
+    public final MutableLiveData<String> failed = new MutableLiveData<>();
+
+    private static volatile MainRepository mInstance;
+
+    public static MainRepository getInstance() {
+        if (mInstance == null) {
+            synchronized (MainRepository.class) {
+                if (mInstance == null) {
+                    mInstance = new MainRepository();
+                }
+            }
+        }
+        return mInstance;
+    }
+
     public MutableLiveData<BiYingResponse> getBiYing() {
         //今日此接口是否已请求
         if (MVUtils.getBoolean(Constant.IS_TODAY_REQUEST)) {
@@ -62,6 +77,7 @@ public class MainRepository {
 
     /**
      * 获取壁纸数据
+     *
      * @return wallPaper
      */
     public MutableLiveData<WallPaperResponse> getWallPaper() {
@@ -132,14 +148,18 @@ public class MainRepository {
         apiService.biying().compose(NetworkApi.applySchedulers(new BaseObserver<BiYingResponse>() {
             @Override
             public void onSuccess(BiYingResponse biYingImgResponse) {
-                //存储到本地数据库中，并记录今日已请求了数据
-                saveImageData(biYingImgResponse);
-                biyingImage.setValue(biYingImgResponse);
+                if (biYingImgResponse.getImages() != null) {
+                    //存储到本地数据库中，并记录今日已请求了数据
+                    saveImageData(biYingImgResponse);
+                    biyingImage.setValue(biYingImgResponse);
+                } else {
+                    failed.postValue("必应数据为空");
+                }
             }
 
             @Override
             public void onFailure(Throwable e) {
-                KLog.e("BiYing Error: " + e.toString());
+                failed.postValue("BiYing Error: " + e.toString());
             }
         }));
     }
@@ -192,14 +212,18 @@ public class MainRepository {
                 wallPaper().compose(NetworkApi.applySchedulers(new BaseObserver<WallPaperResponse>() {
             @Override
             public void onSuccess(WallPaperResponse wallPaperResponse) {
-                //保存本地数据
-                saveWallPaper(wallPaperResponse);
-                wallPaper.setValue(wallPaperResponse);
+                if (wallPaperResponse.getCode() == 0) {
+                    //保存本地数据
+                    saveWallPaper(wallPaperResponse);
+                    wallPaper.setValue(wallPaperResponse);
+                } else {
+                    failed.postValue(wallPaperResponse.getMsg());
+                }
             }
 
             @Override
             public void onFailure(Throwable e) {
-                KLog.e("WallPaper Error: " + e.toString());
+                failed.postValue("WallPaper Error: " + e.toString());
             }
         }));
     }

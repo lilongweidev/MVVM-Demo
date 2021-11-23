@@ -6,8 +6,8 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 /**
+ * 壁纸
  * @author llw
- * @description WallPaper
  */
 @Entity(tableName = "wallpaper")
 public class WallPaper {

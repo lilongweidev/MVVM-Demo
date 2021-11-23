@@ -2,8 +2,10 @@ package com.llw.mvvm.ui.fragment;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
+import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -23,14 +25,15 @@ import com.llw.mvvm.ui.adapter.VideoAdapter;
 import com.llw.mvvm.viewmodels.NewsViewModel;
 import com.llw.mvvm.viewmodels.VideoViewModel;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * 视频
  * @author llw
  */
-public class VideoFragment extends Fragment {
+public class VideoFragment extends BaseFragment {
 
     private VideoFragmentBinding binding;
-    private VideoViewModel mViewModel;
 
     public static VideoFragment newInstance() {
         return new VideoFragment();
@@ -46,15 +49,15 @@ public class VideoFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(VideoViewModel.class);
+        VideoViewModel mViewModel = new ViewModelProvider(this).get(VideoViewModel.class);
 
-        //获取新闻数据
+        //获取视频数据
         mViewModel.getVideo();
-        binding.rv.setLayoutManager(new LinearLayoutManager(requireActivity()));
+        binding.rv.setLayoutManager(new LinearLayoutManager(context));
         //数据刷新
-        mViewModel.video.observe(requireActivity(),videoResponse ->
+        mViewModel.video.observe(context, videoResponse ->
                 binding.rv.setAdapter(new VideoAdapter(videoResponse.getResult())));
-        mViewModel.failed.observe(requireActivity(), failed -> Toast.makeText(requireActivity(), failed, Toast.LENGTH_SHORT).show());
+        mViewModel.failed.observe(context, this::showMsg);
     }
 
 }

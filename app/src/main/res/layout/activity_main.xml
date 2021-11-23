@@ -34,12 +34,13 @@
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
                 app:title="MVVM"
                 app:toolbarId="@+id/toolbar">
-                <!--轮播-->
+                <!--图片-->
                 <com.llw.mvvm.view.CustomImageView
                     android:id="@+id/image"
                     biyingUrl="@{viewModel.biying.images.get(0).url}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@drawable/top_bg"
                     android:fitsSystemWindows="true"
                     android:scaleType="fitXY" />
 
@@ -76,11 +77,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
             android:layout_margin="20dp"
-            app:fabSize="auto"
-            android:onClick="toHome"
             android:background="@color/purple_500"
+            android:onClick="toHome"
             android:src="@mipmap/ic_home"
             app:backgroundTint="@color/purple_500"
-            tools:ignore="UsingOnClickInXml" />
+            app:fabSize="auto"
+            tools:ignore="UsingOnClickInXml"
+            android:contentDescription="主页" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

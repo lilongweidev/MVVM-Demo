@@ -1,14 +1,8 @@
 package com.llw.mvvm.ui.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.MutableLiveData;
-
-import android.app.ActionBar;
-import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
-
 import com.llw.mvvm.R;
 import com.llw.mvvm.databinding.ActivityLoginBinding;
 import com.llw.mvvm.model.User;

@@ -15,9 +15,8 @@ import io.reactivex.Completable;
 import io.reactivex.Flowable;
 
 /**
+ * 壁纸数据操作
  * @author llw
- * @description WallPaperDao
- * @date 2021/11/16 16:16
  */
 @Dao
 public interface WallPaperDao {

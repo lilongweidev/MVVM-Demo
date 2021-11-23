@@ -36,7 +36,7 @@ public class NewsResponse {
         this.error_code = error_code;
     }
 
-    public class ResultBean {
+    public static class ResultBean {
         private String stat;
         private List<DataBean> data;
         private String page;
@@ -74,7 +74,7 @@ public class NewsResponse {
             this.pageSize = pageSize;
         }
 
-        public class DataBean {
+        public static class DataBean {
             private String uniquekey;
             private String title;
             private String date;

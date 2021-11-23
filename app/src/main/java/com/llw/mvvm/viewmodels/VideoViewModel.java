@@ -11,9 +11,7 @@ import com.llw.mvvm.repository.VideoRepository;
  * @author llw
  * {@link com.llw.mvvm.ui.fragment.VideoFragment}
  */
-public class VideoViewModel extends ViewModel {
-
-    public LiveData<String> failed;
+public class VideoViewModel extends BaseViewModel {
 
     public LiveData<VideoResponse> video;
 

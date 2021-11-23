@@ -9,7 +9,7 @@ import com.llw.mvvm.model.User;
  * 登录页面ViewModel
  * @author llw
  */
-public class LoginViewModel extends ViewModel {
+public class LoginViewModel extends BaseViewModel {
 
     public MutableLiveData<User> user;
 

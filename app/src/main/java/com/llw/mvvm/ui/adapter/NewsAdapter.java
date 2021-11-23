@@ -13,6 +13,7 @@ import java.util.List;
 
 /**
  * 新闻列表适配器
+ *
  * @author llw
  */
 public class NewsAdapter extends BaseQuickAdapter<NewsResponse.ResultBean.DataBean, BaseDataBindingHolder<ItemNewsBinding>> {
@@ -24,7 +25,9 @@ public class NewsAdapter extends BaseQuickAdapter<NewsResponse.ResultBean.DataBe
     @Override
     protected void convert(@NotNull BaseDataBindingHolder<ItemNewsBinding> bindingHolder, NewsResponse.ResultBean.DataBean dataBean) {
         ItemNewsBinding binding = bindingHolder.getDataBinding();
-        binding.setNews(dataBean);
-        binding.executePendingBindings();
+        if (binding != null) {
+            binding.setNews(dataBean);
+            binding.executePendingBindings();
+        }
     }
 }
