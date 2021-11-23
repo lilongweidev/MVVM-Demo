@@ -1,7 +1,7 @@
 # MVVM-Demo
 MVVM-Demo  
 
-## Step4
+## Step5
 
 Android MVVM框架搭建（五）Navigation + Fragment + BottomNavigationView
 
