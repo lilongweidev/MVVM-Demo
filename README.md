@@ -1,6 +1,12 @@
 # MVVM-Demo
 MVVM-Demo  
 
+## Step6
+
+Android MVVM框架搭建（六）腾讯X5WebView + DrawerLayout + NavigationView
+
+对应的apk:MVVM-Demo_6.apk
+
 ## Step5
 
 Android MVVM框架搭建（五）Navigation + Fragment + BottomNavigationView
