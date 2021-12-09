@@ -3,45 +3,77 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <RelativeLayout
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.activity.HomeActivity">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/purple_500">
-
-            <TextView
-                android:id="@+id/tv_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="头条新闻"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-        </com.google.android.material.appbar.MaterialToolbar>
-        <!--NavHost-->
-        <fragment
-            android:id="@+id/nav_host_fragment"
-            android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_height="match_parent">
+        <!--主页面布局-->
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/bottom_navigation"
-            android:layout_below="@+id/toolbar"
-            app:navGraph="@navigation/nav_graph" />
+            android:fitsSystemWindows="true"
+            tools:context=".ui.activity.HomeActivity">
 
-        <!--底部导航-->
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_navigation"
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/purple_500">
+
+                <!--圆形图片-->
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_avatar"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:padding="0.5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/logo"
+                    app:shapeAppearanceOverlay="@style/circleImageStyle"
+                    app:strokeColor="@color/white"
+                    app:strokeWidth="1dp" />
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="头条新闻"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.appbar.MaterialToolbar>
+            <!--NavHost-->
+            <fragment
+                android:id="@+id/nav_host_fragment"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/bottom_navigation"
+                android:layout_below="@+id/toolbar"
+                app:navGraph="@navigation/nav_graph" />
+
+            <!--底部导航-->
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_navigation"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_alignParentBottom="true"
+                android:background="#FFF"
+                app:menu="@menu/navigation_menu" />
+
+        </RelativeLayout>
+
+        <!--滑动导航视图-->
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:layout_alignParentBottom="true"
-            android:background="#FFF"
-            app:menu="@menu/navigation_menu" />
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/nav_header"
+            app:itemIconSize="24dp"
+            app:itemIconTint="#000"
+            app:itemTextColor="#000"
+            app:menu="@menu/nav_menu" />
 
-    </RelativeLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
 </layout>

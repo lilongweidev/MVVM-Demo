@@ -2,7 +2,12 @@ package com.llw.mvvm.ui.activity;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.MutableLiveData;
+
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.View;
+
 import com.llw.mvvm.R;
 import com.llw.mvvm.databinding.ActivityLoginBinding;
 import com.llw.mvvm.model.User;
@@ -12,6 +17,7 @@ import com.llw.mvvm.viewmodels.LoginViewModel;
 
 /**
  * 登录页面
+ *
  * @author llw
  */
 public class LoginActivity extends BaseActivity {
@@ -26,11 +32,14 @@ public class LoginActivity extends BaseActivity {
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         loginViewModel = new LoginViewModel();
         //Model → View
-        User user = new User("admin", "123456");
+        User user = new User("", "");
         loginViewModel.getUser().setValue(user);
         //获取观察对象
         MutableLiveData<User> user1 = loginViewModel.getUser();
-        user1.observe(this, user2 -> dataBinding.setViewModel(loginViewModel));
+        user1.observe(this, user2 -> {
+            Log.d("LoginActivity", "onCreate: " + user2.getAccount());
+            dataBinding.setViewModel(loginViewModel);
+        });
 
         dataBinding.btnLogin.setOnClickListener(v -> {
             if (loginViewModel.user.getValue().getAccount().isEmpty()) {
@@ -41,10 +50,51 @@ public class LoginActivity extends BaseActivity {
                 showMsg("请输入密码");
                 return;
             }
+            //检查输入的账户和密码是否是注册过的。
+            checkUser();
+        });
+
+
+    }
+
+    private void checkUser() {
+        loginViewModel.getLocalUser();
+
+        loginViewModel.localUser.observe(this, localUser -> {
+            if (!loginViewModel.user.getValue().getAccount().equals(localUser.getAccount()) ||
+                    !loginViewModel.user.getValue().getPwd().equals(localUser.getPwd())) {
+                showMsg("账号或密码错误");
+                return;
+            }
             //记录已经登录过
-            MVUtils.put(Constant.IS_LOGIN,true);
+            MVUtils.put(Constant.IS_LOGIN, true);
             showMsg("登录成功");
             jumpActivity(MainActivity.class);
         });
+        loginViewModel.failed.observe(this, this::showMsg);
     }
+
+    private long timeMillis;
+
+    /**
+     * Add a prompt to exit the application
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if ((System.currentTimeMillis() - timeMillis) > 2000) {
+                showMsg("再次按下退出应用程序");
+                timeMillis = System.currentTimeMillis();
+            } else {
+                exitTheProgram();
+            }
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    public void toRegister(View view) {
+        jumpActivity(RegisterActivity.class);
+    }
+
 }

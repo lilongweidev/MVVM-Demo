@@ -3,7 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.llw.mvvm">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 权限配置 -->
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:name=".BaseApplication"
@@ -15,6 +21,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MVVMDemo"
         tools:targetApi="n">
+        <activity android:name=".ui.activity.RegisterActivity"></activity>
+        <activity
+            android:name=".ui.activity.PlayActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme" />
+        <activity
+            android:name=".ui.activity.WebActivity"
+            android:theme="@style/SplashTheme" />
         <activity
             android:name=".ui.activity.SplashActivity"
             android:theme="@style/SplashTheme">
@@ -24,7 +39,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.LoginActivity"/>
+        <activity android:name=".ui.activity.LoginActivity" />
         <activity android:name=".ui.activity.HomeActivity" />
         <activity
             android:name=".ui.activity.PictureViewActivity"
@@ -32,6 +47,11 @@
         <activity
             android:name=".ui.activity.MainActivity"
             android:theme="@style/MainTheme" />
+
+        <service
+            android:name="com.tencent.smtt.export.external.DexClassLoaderProviderService"
+            android:label="dexopt"
+            android:process=":dexopt" />
     </application>
 
 </manifest>

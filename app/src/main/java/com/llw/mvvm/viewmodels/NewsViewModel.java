@@ -7,6 +7,7 @@ import com.llw.mvvm.model.NewsResponse;
 import com.llw.mvvm.repository.NewsRepository;
 
 /**
+ * NewsFragment数据提供
  * @author llw
  * {@link com.llw.mvvm.ui.fragment.NewsFragment}
  */

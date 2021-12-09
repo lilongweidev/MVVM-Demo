@@ -25,7 +25,7 @@ public class SplashActivity extends BaseActivity {
         setStatusBar(true);
         EasyAnimation.moveViewWidth(binding.tvTranslate, () -> {
             binding.tvMvvm.setVisibility(View.VISIBLE);
-            jumpActivity(MVUtils.getBoolean(Constant.IS_LOGIN) ? MainActivity.class : LoginActivity.class);
+            jumpActivityFinish(MVUtils.getBoolean(Constant.IS_LOGIN) ? MainActivity.class : LoginActivity.class);
         });
     }
 }

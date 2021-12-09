@@ -8,12 +8,19 @@
         <variable
             name="news"
             type="com.llw.mvvm.model.NewsResponse.ResultBean.DataBean" />
+
+        <variable
+            name="onClick"
+            type="com.llw.mvvm.ui.adapter.NewsAdapter.ClickBinding" />
     </data>
 
     <RelativeLayout
+        android:id="@+id/detail"
         android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="@{() -> onClick.itemClick(news,detail)}"
+        android:foreground="?attr/selectableItemBackground"
         android:paddingStart="12dp"
         android:paddingTop="12dp"
         android:paddingEnd="12dp">

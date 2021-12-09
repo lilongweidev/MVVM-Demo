@@ -6,8 +6,8 @@ import androidx.databinding.Bindable;
 import com.llw.mvvm.BR;
 
 /**
+ * 用户
  * @author llw
- * @description User
  */
 public class User extends BaseObservable {
 
@@ -32,6 +32,9 @@ public class User extends BaseObservable {
     public void setPwd(String pwd) {
         this.pwd = pwd;
         notifyPropertyChanged(BR.pwd);//只通知改变的参数
+    }
+
+    public User() {
     }
 
     public User(String account, String pwd) {

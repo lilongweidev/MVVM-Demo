@@ -8,9 +8,16 @@
         <variable
             name="video"
             type="com.llw.mvvm.model.VideoResponse.ResultBean" />
+
+        <variable
+            name="onClick"
+            type="com.llw.mvvm.ui.adapter.VideoAdapter.ClickBinding" />
     </data>
 
     <RelativeLayout
+        android:id="@+id/detail"
+        android:onClick="@{() -> onClick.itemClick(video,detail)}"
+        android:foreground="?attr/selectableItemBackground"
         android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

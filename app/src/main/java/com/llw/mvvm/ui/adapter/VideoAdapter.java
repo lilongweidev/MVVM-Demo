@@ -1,5 +1,10 @@
 package com.llw.mvvm.ui.adapter;
 
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import android.widget.Toast;
+
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder;
 import com.llw.mvvm.R;
@@ -7,6 +12,8 @@ import com.llw.mvvm.databinding.ItemNewsBinding;
 import com.llw.mvvm.databinding.ItemVideoBinding;
 import com.llw.mvvm.model.NewsResponse;
 import com.llw.mvvm.model.VideoResponse;
+import com.llw.mvvm.ui.activity.PlayActivity;
+import com.llw.mvvm.ui.activity.WebActivity;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -29,7 +36,18 @@ public class VideoAdapter extends BaseQuickAdapter<VideoResponse.ResultBean, Bas
         ItemVideoBinding binding = bindingHolder.getDataBinding();
         if (binding != null) {
             binding.setVideo(dataBean);
+            binding.setOnClick(new ClickBinding());
             binding.executePendingBindings();
+        }
+    }
+
+    public static class ClickBinding {
+        public void itemClick(@NotNull VideoResponse.ResultBean resultBean, View view) {
+            if (resultBean.getShare_url() != null) {
+                view.getContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(resultBean.getShare_url())));
+            } else {
+                Toast.makeText(view.getContext(), "视频地址为空", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }

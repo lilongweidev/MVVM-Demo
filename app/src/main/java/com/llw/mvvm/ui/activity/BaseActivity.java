@@ -1,11 +1,19 @@
 package com.llw.mvvm.ui.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import com.llw.mvvm.BaseApplication;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 基础Activity
@@ -20,6 +28,7 @@ public class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.context = this;
+        BaseApplication.getActivityManager().addActivity(this);
     }
 
     protected void showMsg(CharSequence msg) {
@@ -32,6 +41,7 @@ public class BaseActivity extends AppCompatActivity {
 
     /**
      * 跳转页面
+     *
      * @param clazz 目标页面
      */
     protected void jumpActivity(final Class<?> clazz) {
@@ -40,6 +50,7 @@ public class BaseActivity extends AppCompatActivity {
 
     /**
      * 跳转页面并关闭当前页面
+     *
      * @param clazz 目标页面
      */
     protected void jumpActivityFinish(final Class<?> clazz) {
@@ -47,8 +58,17 @@ public class BaseActivity extends AppCompatActivity {
         finish();
     }
 
+    protected void back(Toolbar toolbar){
+        toolbar.setNavigationOnClickListener(v -> onBackPressed());
+    }
+
+    protected void backAndFinish(Toolbar toolbar){
+        toolbar.setNavigationOnClickListener(v -> onBackPressed());
+    }
+
     /**
      * 状态栏文字图标颜色
+     *
      * @param dark 深色 false 为浅色
      */
     protected void setStatusBar(boolean dark) {
@@ -58,5 +78,12 @@ public class BaseActivity extends AppCompatActivity {
         } else {
             decor.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
         }
+    }
+
+    /**
+     * 退出应用程序
+     */
+    protected void exitTheProgram() {
+        BaseApplication.getActivityManager().finishAllActivity();
     }
 }

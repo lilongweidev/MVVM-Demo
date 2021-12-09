@@ -5,7 +5,6 @@ import java.util.List;
 /**
  * 必应访问接口返回数据实体
  * @author llw
- * @description BiYingImgResponse
  */
 public class BiYingResponse {
 

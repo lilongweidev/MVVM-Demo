@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 
 import com.google.android.material.appbar.AppBarLayout;
@@ -82,5 +83,23 @@ public class MainActivity extends BaseActivity {
 
     public void toHome(View view) {
         jumpActivity(HomeActivity.class);
+    }
+
+    private long timeMillis;
+    /**
+     * Add a prompt to exit the application
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if ((System.currentTimeMillis() - timeMillis) > 2000) {
+                showMsg("再次按下退出应用程序");
+                timeMillis = System.currentTimeMillis();
+            } else {
+                exitTheProgram();
+            }
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

@@ -24,7 +24,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * 网络Api
  *
  * @author llw
- * @description NetworkApi
  */
 public class NetworkApi {
 

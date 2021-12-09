@@ -10,10 +10,12 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.llw.mvvm.db.bean.Image;
 import com.llw.mvvm.db.bean.News;
+import com.llw.mvvm.db.bean.User;
 import com.llw.mvvm.db.bean.Video;
 import com.llw.mvvm.db.bean.WallPaper;
 import com.llw.mvvm.db.dao.ImageDao;
 import com.llw.mvvm.db.dao.NewsDao;
+import com.llw.mvvm.db.dao.UserDao;
 import com.llw.mvvm.db.dao.VideoDao;
 import com.llw.mvvm.db.dao.WallPaperDao;
 
@@ -26,7 +28,8 @@ import com.llw.mvvm.db.dao.WallPaperDao;
         Image.class,
         WallPaper.class,
         News.class,
-        Video.class}, version = 3, exportSchema = false)
+        Video.class,
+        User.class}, version = 4, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static final String DATABASE_NAME = "mvvm_demo";
@@ -43,6 +46,7 @@ public abstract class AppDatabase extends RoomDatabase {
                             AppDatabase.class, DATABASE_NAME)
                             .addMigrations(MIGRATION_1_2)
                             .addMigrations(MIGRATION_2_3)
+                            .addMigrations(MIGRATION_3_4)
                             .build();
                 }
             }
@@ -57,6 +61,25 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract NewsDao newsDao();
 
     public abstract VideoDao videoDao();
+
+    public abstract UserDao userDao();
+
+    /**
+     * 版本升级迁移到4 新增用户表
+     */
+    static final Migration MIGRATION_3_4 = new Migration(3, 4) {
+        @Override
+        public void migrate(SupportSQLiteDatabase database) {
+            //创建用户表
+            database.execSQL("CREATE TABLE `news` " +
+                    "(uid INTEGER NOT NULL, " +
+                    "account TEXT, " +
+                    "pwd TEXT, " +
+                    "nickname TEXT," +
+                    "introduction TEXT," +
+                    "PRIMARY KEY(`uid`))");
+        }
+    };
 
 
     /**

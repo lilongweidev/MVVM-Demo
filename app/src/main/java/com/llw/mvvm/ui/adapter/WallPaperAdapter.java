@@ -19,7 +19,6 @@ import java.util.List;
 /**
  * 壁纸列表适配器
  * @author llw
- * @description WallPaperAdapter
  */
 public class WallPaperAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 

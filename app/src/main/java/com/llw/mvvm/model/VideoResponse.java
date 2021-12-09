@@ -3,9 +3,8 @@ package com.llw.mvvm.model;
 import java.util.List;
 
 /**
+ * 视频返回数据
  * @author llw
- * @description VideoResponse
- * @date 2021/11/19 17:58
  */
 public class VideoResponse {
 

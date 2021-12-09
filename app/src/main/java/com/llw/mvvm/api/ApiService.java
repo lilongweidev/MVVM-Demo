@@ -1,12 +1,14 @@
 package com.llw.mvvm.api;
 
 import com.llw.mvvm.model.BiYingResponse;
+import com.llw.mvvm.model.NewsDetailResponse;
 import com.llw.mvvm.model.NewsResponse;
 import com.llw.mvvm.model.VideoResponse;
 import com.llw.mvvm.model.WallPaperResponse;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 /**
  * 所有的Api网络接口
@@ -31,6 +33,12 @@ public interface ApiService {
      */
     @GET("/toutiao/index?type=&page=&page_size=&is_filter=&key=99d3951ed32af2930afd9b38293a08a2")
     Observable<NewsResponse> news();
+
+    /**
+     * 聚合新闻数据详情
+     */
+    @GET("/toutiao/content?key=99d3951ed32af2930afd9b38293a08a2")
+    Observable<NewsDetailResponse> newsDetail(@Query("uniquekey") String uniquekey);
 
     /**
      * 聚合热门视频数据
