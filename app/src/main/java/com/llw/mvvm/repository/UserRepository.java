@@ -30,6 +30,19 @@ import io.reactivex.functions.Consumer;
  */
 public class UserRepository {
 
+    private static volatile UserRepository mInstance;
+
+    public static UserRepository getInstance() {
+        if (mInstance == null) {
+            synchronized (UserRepository.class) {
+                if (mInstance == null) {
+                    mInstance = new UserRepository();
+                }
+            }
+        }
+        return mInstance;
+    }
+
 
     private static final String TAG = UserRepository.class.getSimpleName();
     private final MutableLiveData<User> userMutableLiveData = new MutableLiveData<>();
@@ -61,6 +74,7 @@ public class UserRepository {
     public void updateUser(User user) {
         Completable update = BaseApplication.getDb().userDao().update(user);
         CustomDisposable.addDisposable(update, () -> {
+            Log.d(TAG, "updateUser: " + "保存成功");
             failed.postValue("200");
         });
     }

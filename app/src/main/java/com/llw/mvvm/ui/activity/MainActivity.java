@@ -3,6 +3,7 @@ package com.llw.mvvm.ui.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.NestedScrollView;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 
@@ -30,6 +31,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        showLoading();
         //数据绑定视图
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
@@ -41,7 +43,11 @@ public class MainActivity extends BaseActivity {
         initView();
         //热门壁纸 网络请求
         mainViewModel.getWallPaper();
-        mainViewModel.wallPaper.observe(this, wallPaperResponse -> dataBinding.rv.setAdapter(new WallPaperAdapter(wallPaperResponse.getRes().getVertical())));
+        mainViewModel.wallPaper.observe(this, wallPaperResponse -> {
+            dataBinding.rv.setAdapter(new WallPaperAdapter(wallPaperResponse.getRes().getVertical()));
+            dismissLoading();
+        });
+        mainViewModel.failed.observe(this, failed -> dismissLoading());
     }
 
     /**

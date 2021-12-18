@@ -1,6 +1,12 @@
 # MVVM-Demo
 MVVM-Demo  
 
+## Step7
+
+Android MVVM框架搭建（七）Permission、AlertDialog、拍照和相册选取
+
+对应的apk:MVVM-Demo_7.apk
+
 ## Step6
 
 Android MVVM框架搭建（六）腾讯X5WebView + DrawerLayout + NavigationView

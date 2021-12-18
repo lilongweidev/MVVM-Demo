@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.databinding.BindingAdapter;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.llw.mvvm.BaseApplication;
@@ -25,6 +26,13 @@ public class CustomImageView extends ShapeableImageView {
             .placeholder(R.drawable.wallpaper_bg)//图片加载出来前，显示的图片
             .fallback(R.drawable.wallpaper_bg) //url为空的时候,显示的图片
             .error(R.mipmap.ic_loading_failed);//图片加载失败后，显示的图片
+
+    private static final RequestOptions OPTIONS_LOCAL = new RequestOptions()
+            .placeholder(R.drawable.logo)//图片加载出来前，显示的图片
+            .fallback(R.drawable.logo) //url为空的时候,显示的图片
+            .error(R.mipmap.ic_loading_failed)//图片加载失败后，显示的图片
+            .diskCacheStrategy(DiskCacheStrategy.NONE)//不做磁盘缓存
+            .skipMemoryCache(true);
 
     public CustomImageView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -52,5 +60,16 @@ public class CustomImageView extends ShapeableImageView {
     @BindingAdapter(value = {"networkUrl"}, requireAll = false)
     public static void setNetworkUrl(ImageView imageView, String url) {
         Glide.with(BaseApplication.getContext()).load(url).apply(OPTIONS).into(imageView);
+    }
+
+    /**
+     * 本地地址图片
+     *
+     * @param imageView 图片视图
+     * @param url       本地url
+     */
+    @BindingAdapter(value = {"localUrl"}, requireAll = false)
+    public static void setLocalUrl(ImageView imageView, String url) {
+        Glide.with(BaseApplication.getContext()).load(url).apply(OPTIONS_LOCAL).into(imageView);
     }
 }

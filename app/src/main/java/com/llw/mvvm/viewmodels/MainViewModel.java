@@ -23,7 +23,7 @@ public class MainViewModel extends BaseViewModel {
 
     public LiveData<WallPaperResponse> wallPaper;
 
-    public LiveData<User> user;
+
 
     public void getBiying() {
         failed = MainRepository.getInstance().failed;
@@ -35,8 +35,6 @@ public class MainViewModel extends BaseViewModel {
         wallPaper = MainRepository.getInstance().getWallPaper();
     }
 
-    public void getUser() {
-        user = new UserRepository().getUser();
-    }
+
 
 }

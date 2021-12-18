@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialog_view"
+    android:orientation="vertical"
+    android:layout_width="120dp"
+    android:layout_height="120dp"
+    android:gravity="center"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/iv_loading"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@mipmap/ic_loading" />
+
+    <TextView
+        android:id="@+id/tv_loading_tx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:maxLines="1"
+        android:text="Loading..."
+        android:textColor="@color/purple_500"
+        android:textSize="14sp" />
+</LinearLayout>

@@ -3,6 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="homeViewModel"
+            type="com.llw.mvvm.viewmodels.HomeViewModel" />
+    </data>
+
+
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
@@ -21,8 +29,9 @@
                 android:background="@color/purple_500">
 
                 <!--圆形图片-->
-                <com.google.android.material.imageview.ShapeableImageView
+                <com.llw.mvvm.view.CustomImageView
                     android:id="@+id/iv_avatar"
+                    localUrl="@{homeViewModel.user.avatar}"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:padding="0.5dp"

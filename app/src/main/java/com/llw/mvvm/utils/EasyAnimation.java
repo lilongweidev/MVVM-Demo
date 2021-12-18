@@ -1,9 +1,17 @@
 package com.llw.mvvm.utils;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
+import android.content.Context;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
+import android.widget.LinearLayout;
+
+import androidx.transition.AutoTransition;
 
 /**
  * 简易动画
@@ -11,6 +19,8 @@ import android.view.animation.TranslateAnimation;
  * @description EasyAnimation
  */
 public class EasyAnimation {
+
+    private AutoTransition autoTransition;
 
     /**
      * 开始眨眼动画
@@ -115,6 +125,24 @@ public class EasyAnimation {
             });
         });
     }
+
+    private ValueAnimator createDropAnimator(final View view, int start, int end) {
+        ValueAnimator animator = ValueAnimator.ofInt(start, end);
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                int value = (int) animation.getAnimatedValue();
+                ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
+                layoutParams.height = value;
+                view.setLayoutParams(layoutParams);
+            }
+        });
+        return animator;
+    }
+
+
+
+
 
     public interface TranslateCallback {
         //动画结束

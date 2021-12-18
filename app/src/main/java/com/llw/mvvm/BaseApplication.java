@@ -4,17 +4,13 @@ import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 import android.util.Log;
-
-import androidx.room.Room;
 import com.llw.mvvm.db.AppDatabase;
 import com.llw.mvvm.network.NetworkApi;
 import com.llw.mvvm.ui.activity.ActivityManager;
 import com.llw.mvvm.utils.MVUtils;
-import com.llw.mvvm.utils.SPUtils;
 import com.tencent.mmkv.MMKV;
 import com.tencent.smtt.export.external.TbsCoreSettings;
 import com.tencent.smtt.sdk.QbSdk;
-
 import java.util.HashMap;
 
 /**

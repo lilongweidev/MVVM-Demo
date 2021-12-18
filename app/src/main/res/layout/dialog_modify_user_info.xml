@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_bg_white_radius_24"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="12dp"
+            android:text="修改用户信息"
+            android:textColor="@color/purple_500"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line" />
+
+        <TextView
+            android:id="@+id/tv_modify_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="?selectableItemBackground"
+            android:gravity="center"
+            android:padding="12dp"
+            android:text="修改头像"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:id="@+id/lay_modify_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_album_selection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/line"
+                android:foreground="?selectableItemBackground"
+                android:gravity="center"
+                android:padding="12dp"
+                android:text="相册选择"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_camera_photo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/line"
+                android:foreground="?selectableItemBackground"
+                android:gravity="center"
+                android:padding="12dp"
+                android:text="相机拍照"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/line" />
+
+        <TextView
+            android:id="@+id/tv_modify_nickname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="?selectableItemBackground"
+            android:gravity="center"
+            android:padding="12dp"
+            android:text="修改昵称"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/line" />
+
+        <TextView
+            android:id="@+id/tv_modify_Introduction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="?selectableItemBackground"
+            android:gravity="center"
+            android:padding="12dp"
+            android:text="修改简介"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/line" />
+
+        <TextView
+            android:id="@+id/tv_close"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="12dp"
+            android:text="关闭"
+            android:textColor="@color/purple_500"
+            android:textSize="16sp" />
+    </LinearLayout>
+</layout>

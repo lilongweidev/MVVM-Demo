@@ -3,10 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.llw.mvvm">
 
-    <uses-permission android:name="android.permission.INTERNET" /> <!-- 权限配置 -->
+    <!-- 网络权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 相机权限 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- 文件读写权限-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
+    <!-- 管理外部存储权限，Android11需要-->
+    <uses-permission
+        android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -17,11 +27,12 @@
         android:icon="@mipmap/ic_mvvm"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_config"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_mvvm"
         android:supportsRtl="true"
         android:theme="@style/Theme.MVVMDemo"
         tools:targetApi="n">
-        <activity android:name=".ui.activity.RegisterActivity"></activity>
+        <activity android:name=".ui.activity.RegisterActivity" />
         <activity
             android:name=".ui.activity.PlayActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
@@ -52,6 +63,17 @@
             android:name="com.tencent.smtt.export.external.DexClassLoaderProviderService"
             android:label="dexopt"
             android:process=":dexopt" />
+
+        <!-- Android7.0以后读取文件需要配置Provider -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

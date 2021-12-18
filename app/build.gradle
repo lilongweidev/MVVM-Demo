@@ -32,7 +32,7 @@ android {
     // 自定义打包名称
     android.applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = "MVVM-Demo_6.apk"
+            outputFileName = "MVVM-Demo_7.apk"
         }
     }
 
