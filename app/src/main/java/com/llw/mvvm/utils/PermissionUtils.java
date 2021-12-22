@@ -2,10 +2,8 @@ package com.llw.mvvm.utils;
 
 import android.Manifest;
 import android.app.Activity;
-import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.os.Environment;
 
 import androidx.core.app.ActivityCompat;
 
@@ -21,10 +19,12 @@ public class PermissionUtils {
     public static final String READ_EXTERNAL_STORAGE = Manifest.permission.READ_EXTERNAL_STORAGE;
     public static final String WRITE_EXTERNAL_STORAGE = Manifest.permission.WRITE_EXTERNAL_STORAGE;
     public static final String CAMERA = Manifest.permission.CAMERA;
+    public static final String LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
 
     public static final int REQUEST_STORAGE_CODE = 1001;
     public static final int REQUEST_CAMERA_CODE = 1002;
     public static final int REQUEST_MANAGE_EXTERNAL_STORAGE_CODE = 1000;
+    public static final int REQUEST_LOCATION_CODE = 1003;
 
     public static PermissionUtils getInstance() {
         if (mInstance == null) {
@@ -66,6 +66,9 @@ public class PermissionUtils {
                 break;
             case CAMERA:
                 requestCode = REQUEST_CAMERA_CODE;
+                break;
+            case LOCATION:
+                requestCode = REQUEST_LOCATION_CODE;
                 break;
             default:
                 requestCode = 1000;

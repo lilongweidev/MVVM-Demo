@@ -10,14 +10,15 @@ android {
         applicationId "com.llw.mvvm"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        versionCode 8
+        versionName "8.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJU=nitRunner"
 
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]//指定数据库schema导出的位置
+                //指定数据库schema导出的位置
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
             }
         }
     }
@@ -32,7 +33,7 @@ android {
     // 自定义打包名称
     android.applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = "MVVM-Demo_7.apk"
+            outputFileName = "MVVM-Demo_8.apk"
         }
     }
 
@@ -46,6 +47,18 @@ android {
         dataBinding true
     }
 
+    defaultConfig {
+        ndk {
+            //设置支持的SO库架构
+            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
     /*allprojects {
         gradle.projectsEvaluated {
             tasks.withType(JavaCompile) {
@@ -56,6 +69,9 @@ android {
 }
 
 dependencies {
+    //加载lib下的jar文件
+    implementation fileTree(include: '*.jar', dir: 'libs')
+
     implementation 'androidx.appcompat:appcompat:1.3.0'
     implementation 'com.google.android.material:material:1.3.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
@@ -95,5 +111,4 @@ dependencies {
     implementation 'com.tencent.tbs:tbssdk:44085'
     // 饺子VideoView
     implementation 'cn.jzvd:jiaozivideoplayer:7.7.0'
-
 }

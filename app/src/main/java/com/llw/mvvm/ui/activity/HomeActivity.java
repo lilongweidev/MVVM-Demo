@@ -12,20 +12,26 @@ import androidx.navigation.Navigation;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.amap.api.maps.MapsInitializer;
 import com.google.gson.Gson;
 import com.llw.mvvm.R;
 import com.llw.mvvm.databinding.ActivityHomeBinding;
@@ -102,6 +108,10 @@ public class HomeActivity extends BaseActivity {
                     binding.tvTitle.setText("热门视频");
                     navController.navigate(R.id.video_fragment);
                     break;
+                case R.id.map_fragment:
+                    binding.tvTitle.setText("地图天气");
+                    navController.navigate(R.id.map_fragment);
+                    break;
                 default:
             }
             return true;
@@ -136,6 +146,21 @@ public class HomeActivity extends BaseActivity {
             //隐藏加载弹窗
             dismissLoading();
         });
+        //请求定位权限
+        requestLocation();
+    }
+
+    /**
+     * 请求定位权限
+     */
+    private void requestLocation() {
+        if (isAndroid6()) {
+            if (!hasPermission(PermissionUtils.LOCATION)) {
+                requestPermission(PermissionUtils.LOCATION);
+            }
+        } else {
+            showMsg("您无需动态请求权限");
+        }
     }
 
     /**
@@ -164,6 +189,7 @@ public class HomeActivity extends BaseActivity {
 
     /**
      * 显示可输入文字弹窗
+     *
      * @param type 0 修改昵称  1  修改简介
      */
     private void showEditDialog(int type) {
@@ -282,7 +308,7 @@ public class HomeActivity extends BaseActivity {
         if (!storageDir.exists()) {
             storageDir.mkdir();
         }
-        File tempFile = new File(storageDir, EasyDate.getMilliSecond()+"");
+        File tempFile = new File(storageDir, EasyDate.getMilliSecond() + "");
         if (!Environment.MEDIA_MOUNTED.equals(EnvironmentCompat.getStorageState(tempFile))) {
             return null;
         }
@@ -358,11 +384,18 @@ public class HomeActivity extends BaseActivity {
                 openAlbum();
                 break;
             case PermissionUtils.REQUEST_CAMERA_CODE:
+                //相机权限
                 if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                     showMsg("您拒绝了相机权限，无法打开相机，抱歉。");
                     return;
                 }
                 openCamera();
+                break;
+            case PermissionUtils.REQUEST_LOCATION_CODE:
+                //定位权限
+                if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    showMsg("您拒绝了位置许可，将无法使用地图，抱歉。");
+                }
                 break;
             default:
                 break;

@@ -8,5 +8,9 @@
         android:id="@+id/video_fragment"
         android:icon="@mipmap/ic_hot_video"
         android:title="视频" />
+    <item
+        android:id="@+id/map_fragment"
+        android:icon="@mipmap/ic_map"
+        android:title="地图" />
 
 </menu>

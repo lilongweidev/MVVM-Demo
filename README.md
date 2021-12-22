@@ -1,6 +1,15 @@
 # MVVM-Demo
 MVVM-Demo  
 
+## 扫码下载
+![下载图片](https://github.com/lilongweidev/MVVM-Demo/blob/master/apk/code.png)<br>
+
+## Step8
+
+Android MVVM框架搭建（八）高德地图定位、天气查询、BottomSheetDialog
+
+对应的apk:MVVM-Demo_8.apk
+
 ## Step7
 
 Android MVVM框架搭建（七）Permission、AlertDialog、拍照和相册选取

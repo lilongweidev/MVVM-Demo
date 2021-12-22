@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="line">#EEE</color>
     <color name="gray">#878789</color>
+
+    <color name="translucent">#90000000</color>
 </resources>

@@ -4,15 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/news_fragment">
-
+    <!--新闻-->
     <fragment
         android:id="@+id/news_fragment"
         android:name="com.llw.mvvm.ui.fragment.NewsFragment"
         android:label="news_fragment"
         tools:layout="@layout/news_fragment" />
+    <!--视频-->
     <fragment
         android:id="@+id/video_fragment"
         android:name="com.llw.mvvm.ui.fragment.VideoFragment"
         android:label="video_fragment"
         tools:layout="@layout/video_fragment" />
+    <!--地图-->
+    <fragment
+        android:id="@+id/map_fragment"
+        android:name="com.llw.mvvm.ui.fragment.MapFragment"
+        android:label="map_fragment"
+        tools:layout="@layout/map_fragment" />
 </navigation>
