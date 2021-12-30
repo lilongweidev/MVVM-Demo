@@ -3,19 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/news_fragment">
-    <!--新闻-->
+    app:startDestination="@id/info_fragment">
+    <!--资讯-->
     <fragment
-        android:id="@+id/news_fragment"
-        android:name="com.llw.mvvm.ui.fragment.NewsFragment"
-        android:label="news_fragment"
-        tools:layout="@layout/news_fragment" />
-    <!--视频-->
-    <fragment
-        android:id="@+id/video_fragment"
-        android:name="com.llw.mvvm.ui.fragment.VideoFragment"
-        android:label="video_fragment"
-        tools:layout="@layout/video_fragment" />
+        android:id="@+id/info_fragment"
+        android:name="com.llw.mvvm.ui.fragment.InfoFragment"
+        android:label="info_fragment"
+        tools:layout="@layout/info_fragment" />
+
     <!--地图-->
     <fragment
         android:id="@+id/map_fragment"

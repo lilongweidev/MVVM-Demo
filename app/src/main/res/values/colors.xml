@@ -11,4 +11,5 @@
     <color name="gray">#878789</color>
 
     <color name="translucent">#90000000</color>
+    <color name="gray_white">#F8F8F8</color><!--灰白-->
 </resources>

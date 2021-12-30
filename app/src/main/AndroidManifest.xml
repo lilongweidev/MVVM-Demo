@@ -2,34 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.llw.mvvm">
-
     <!-- 网络权限 -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!-- 相机权限 -->
-    <uses-permission android:name="android.permission.CAMERA" />
-    <!-- 文件读写权限-->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 相机权限 -->
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- 文件读写权限 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        tools:ignore="ScopedStorage" />
-    <!-- 管理外部存储权限，Android11需要-->
+        tools:ignore="ScopedStorage" /> <!-- 管理外部存储权限，Android11需要 -->
     <uses-permission
         android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
-        tools:ignore="ScopedStorage" />
-    <!--允许获取网络状态，用于网络定位-->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!--允许获取wifi网络信息，用于网络定位-->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <!--允许获取设备和运营商信息，用于问题排查和网络定位-->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
-    <!--允许获取粗略位置-->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <!--允许获取精准位置-->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <!--允许获取wifi状态改变，用于网络定位-->
+        tools:ignore="ScopedStorage" /> <!-- 允许获取网络状态，用于网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 允许获取wifi网络信息，用于网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 允许获取设备和运营商信息，用于问题排查和网络定位 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 允许获取粗略位置 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 允许获取精准位置 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 允许获取wifi状态改变，用于网络定位 -->
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-
 
     <application
         android:name=".BaseApplication"
@@ -42,6 +30,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MVVMDemo"
         tools:targetApi="n">
+        <activity android:name=".ui.activity.AboutActivity"></activity>
         <activity android:name=".ui.activity.RegisterActivity" />
         <activity
             android:name=".ui.activity.PlayActivity"
@@ -67,15 +56,11 @@
             android:theme="@style/ImageTheme" />
         <activity
             android:name=".ui.activity.MainActivity"
-            android:theme="@style/MainTheme" />
-
-        <!--腾讯WebView-->
+            android:theme="@style/MainTheme" /> <!-- 腾讯WebView -->
         <service
             android:name="com.tencent.smtt.export.external.DexClassLoaderProviderService"
             android:label="dexopt"
-            android:process=":dexopt" />
-
-        <!-- Android7.0以后读取文件需要配置Provider -->
+            android:process=":dexopt" /> <!-- Android7.0以后读取文件需要配置Provider -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
@@ -84,13 +69,10 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
-        </provider>
-
-        <!--高德地图Key-->
+        </provider> <!-- 高德地图Key -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="597d296d723c5adb7165b732bc6f831e"/>
-
+            android:value="597d296d723c5adb7165b732bc6f831e" />
     </application>
 
 </manifest>

@@ -88,6 +88,11 @@
         <item name="android:windowExitAnimation">@anim/dialog_scale_anim_out</item>
     </style>
 
+    <style name="dialog_from_right_anim">
+        <item name="android:windowEnterAnimation">@anim/dialog_from_right_anim_in</item>
+        <item name="android:windowExitAnimation">@anim/dialog_from_right_anim_out</item>
+    </style>
+
     <style name="BottomSheetDialogStyle" parent="Theme.Design.BottomSheetDialog">
         <item name="android:windowFrame">@null</item>
         <item name="android:windowIsFloating">true</item>

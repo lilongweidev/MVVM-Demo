@@ -100,13 +100,9 @@ public class HomeActivity extends BaseActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         binding.bottomNavigation.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
-                case R.id.news_fragment:
-                    binding.tvTitle.setText("头条新闻");
-                    navController.navigate(R.id.news_fragment);
-                    break;
-                case R.id.video_fragment:
-                    binding.tvTitle.setText("热门视频");
-                    navController.navigate(R.id.video_fragment);
+                case R.id.info_fragment:
+                    binding.tvTitle.setText("热门资讯");
+                    navController.navigate(R.id.info_fragment);
                     break;
                 case R.id.map_fragment:
                     binding.tvTitle.setText("地图天气");
@@ -120,6 +116,10 @@ public class HomeActivity extends BaseActivity {
         binding.navView.setNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.item_setting:
+
+                    break;
+                case R.id.item_about:
+                    jumpActivity(AboutActivity.class);
                     break;
                 case R.id.item_logout:
                     logout();
