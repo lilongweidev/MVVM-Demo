@@ -2,9 +2,7 @@ package com.llw.mvvm.repository;
 
 import android.annotation.SuppressLint;
 import android.util.Log;
-
 import androidx.lifecycle.MutableLiveData;
-
 import com.llw.mvvm.BaseApplication;
 import com.llw.mvvm.db.bean.WallPaper;
 import com.llw.mvvm.model.WallPaperResponse;
@@ -15,15 +13,18 @@ import com.llw.mvvm.model.BiYingResponse;
 import com.llw.mvvm.network.BaseObserver;
 import com.llw.mvvm.network.NetworkApi;
 import com.llw.mvvm.network.utils.DateUtil;
-import com.llw.mvvm.network.utils.KLog;
 import com.llw.mvvm.utils.MVUtils;
+import com.llw.mvvm.utils.MVUtilsEntryPoint;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.inject.Inject;
 
+import dagger.hilt.android.EntryPointAccessors;
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
-import io.reactivex.functions.Consumer;
+
+import static com.llw.mvvm.BaseApplication.getContext;
 
 /**
  * Main存储库 用于对数据进行处理
@@ -45,23 +46,20 @@ public class MainRepository {
 
     public final MutableLiveData<String> failed = new MutableLiveData<>();
 
-    private static volatile MainRepository mInstance;
+    private final MVUtils mvUtils;
 
-    public static MainRepository getInstance() {
-        if (mInstance == null) {
-            synchronized (MainRepository.class) {
-                if (mInstance == null) {
-                    mInstance = new MainRepository();
-                }
-            }
-        }
-        return mInstance;
+    @Inject
+    public MainRepository() {
+        //获取mvUtils
+        MVUtilsEntryPoint entryPoint =
+                EntryPointAccessors.fromApplication(getContext(), MVUtilsEntryPoint.class);
+        mvUtils = entryPoint.getMVUtils();
     }
 
     public MutableLiveData<BiYingResponse> getBiYing() {
         //今日此接口是否已请求
-        if (MVUtils.getBoolean(Constant.IS_TODAY_REQUEST)) {
-            if (DateUtil.getTimestamp() <= MVUtils.getLong(Constant.REQUEST_TIMESTAMP)) {
+        if (mvUtils.getBoolean(Constant.IS_TODAY_REQUEST)) {
+            if (DateUtil.getTimestamp() <= mvUtils.getLong(Constant.REQUEST_TIMESTAMP)) {
                 //当前时间未超过次日0点，从本地获取
                 getLocalDB();
             } else {
@@ -77,13 +75,12 @@ public class MainRepository {
 
     /**
      * 获取壁纸数据
-     *
      * @return wallPaper
      */
     public MutableLiveData<WallPaperResponse> getWallPaper() {
         //今日此接口是否已经请求
-        if (MVUtils.getBoolean(Constant.IS_TODAY_REQUEST_WALLPAPER)) {
-            if (DateUtil.getTimestamp() <= MVUtils.getLong(Constant.REQUEST_TIMESTAMP_WALLPAPER)) {
+        if (mvUtils.getBoolean(Constant.IS_TODAY_REQUEST_WALLPAPER)) {
+            if (DateUtil.getTimestamp() <= mvUtils.getLong(Constant.REQUEST_TIMESTAMP_WALLPAPER)) {
                 getLocalDBForWallPaper();
             } else {
                 requestNetworkApiForWallPaper();
@@ -114,7 +111,6 @@ public class MainRepository {
             wallPaper.postValue(wallPaperResponse);
         });
     }
-
 
     /**
      * 从本地数据库获取
@@ -169,9 +165,9 @@ public class MainRepository {
      */
     private void saveImageData(BiYingResponse biYingImgResponse) {
         //记录今日已请求
-        MVUtils.put(Constant.IS_TODAY_REQUEST, true);
+        mvUtils.put(Constant.IS_TODAY_REQUEST, true);
         //记录此次请求的时最晚有效时间戳
-        MVUtils.put(Constant.REQUEST_TIMESTAMP, DateUtil.getMillisNextEarlyMorning());
+        mvUtils.put(Constant.REQUEST_TIMESTAMP, DateUtil.getMillisNextEarlyMorning());
         BiYingResponse.ImagesBean bean = biYingImgResponse.getImages().get(0);
         //保存到数据库
         Completable insert = BaseApplication.getDb().imageDao().insertAll(
@@ -185,8 +181,8 @@ public class MainRepository {
      * 保存热门壁纸数据
      */
     private void saveWallPaper(WallPaperResponse wallPaperResponse) {
-        MVUtils.put(Constant.IS_TODAY_REQUEST_WALLPAPER, true);
-        MVUtils.put(Constant.REQUEST_TIMESTAMP_WALLPAPER, DateUtil.getMillisNextEarlyMorning());
+        mvUtils.put(Constant.IS_TODAY_REQUEST_WALLPAPER, true);
+        mvUtils.put(Constant.REQUEST_TIMESTAMP_WALLPAPER, DateUtil.getMillisNextEarlyMorning());
 
         Completable deleteAll = BaseApplication.getDb().wallPaperDao().deleteAll();
         CustomDisposable.addDisposable(deleteAll, () -> {

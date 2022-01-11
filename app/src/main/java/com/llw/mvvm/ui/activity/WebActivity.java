@@ -11,10 +11,13 @@ import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
 /**
  * 网页Activity
  * @author llw
  */
+@AndroidEntryPoint
 public class WebActivity extends BaseActivity {
 
     @Override

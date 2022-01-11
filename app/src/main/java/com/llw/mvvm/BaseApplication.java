@@ -13,10 +13,16 @@ import com.tencent.smtt.export.external.TbsCoreSettings;
 import com.tencent.smtt.sdk.QbSdk;
 import java.util.HashMap;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.AndroidEntryPoint;
+import dagger.hilt.android.HiltAndroidApp;
+
 /**
  * 自定义 Application
  * @author llw
  */
+@HiltAndroidApp
 public class BaseApplication extends Application {
 
     @SuppressLint("StaticFieldLeak")
@@ -25,17 +31,12 @@ public class BaseApplication extends Application {
     //数据库
     public static AppDatabase db;
 
-
     @Override
     public void onCreate() {
         super.onCreate();
         context = getApplicationContext();
         //初始化网络框架
         NetworkApi.init(new NetworkRequiredInfo(this));
-        //MMKV初始化
-        MMKV.initialize(this);
-        //工具类初始化
-        MVUtils.getInstance();
         //创建本地数据库
         db = AppDatabase.getInstance(this);
         //腾讯WebView初始化

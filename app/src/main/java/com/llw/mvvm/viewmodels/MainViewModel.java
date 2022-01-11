@@ -1,5 +1,6 @@
 package com.llw.mvvm.viewmodels;
 
+import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -23,18 +24,20 @@ public class MainViewModel extends BaseViewModel {
 
     public LiveData<WallPaperResponse> wallPaper;
 
+    private final MainRepository mainRepository;
 
+    @ViewModelInject
+    MainViewModel(MainRepository mainRepository) {
+        this.mainRepository = mainRepository;
+    }
 
     public void getBiying() {
-        failed = MainRepository.getInstance().failed;
-        biying = MainRepository.getInstance().getBiYing();
+        failed = mainRepository.failed;
+        biying = mainRepository.getBiYing();
     }
 
     public void getWallPaper() {
-        failed = MainRepository.getInstance().failed;
-        wallPaper = MainRepository.getInstance().getWallPaper();
+        failed = mainRepository.failed;
+        wallPaper = mainRepository.getWallPaper();
     }
-
-
-
 }

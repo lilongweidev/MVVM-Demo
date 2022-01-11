@@ -1,5 +1,6 @@
 package com.llw.mvvm.utils;
 
+import android.content.Context;
 import android.os.Parcelable;
 
 import com.tencent.mmkv.MMKV;
@@ -7,30 +8,32 @@ import com.tencent.mmkv.MMKV;
 import java.util.Collections;
 import java.util.Set;
 
+import javax.inject.Singleton;
+
+import dagger.Module;
+import dagger.Provides;
+import dagger.hilt.InstallIn;
+import dagger.hilt.android.components.ApplicationComponent;
+import dagger.hilt.android.qualifiers.ApplicationContext;
+
 /**
  * MMKV Utils
  *
  * @author llw
  * @description MVUtils
  */
+@Module
+@InstallIn(ApplicationComponent.class)
 public class MVUtils {
 
-    private static MVUtils mInstance;
     private static MMKV mmkv;
 
-    public MVUtils() {
+    @Provides
+    @Singleton
+    public MVUtils getMVUtils(@ApplicationContext Context context) {
+        MMKV.initialize(context);
         mmkv = MMKV.defaultMMKV();
-    }
-
-    public static MVUtils getInstance() {
-        if (mInstance == null) {
-            synchronized (MVUtils.class) {
-                if (mInstance == null) {
-                    mInstance = new MVUtils();
-                }
-            }
-        }
-        return mInstance;
+        return new MVUtils();
     }
 
     /**
@@ -39,7 +42,7 @@ public class MVUtils {
      * @param key    键
      * @param object 值
      */
-    public static void put(String key, Object object) {
+    public void put(String key, Object object) {
         if (object instanceof String) {
             mmkv.encode(key, (String) object);
         } else if (object instanceof Integer) {
@@ -59,75 +62,75 @@ public class MVUtils {
         }
     }
 
-    public static void putSet(String key, Set<String> sets) {
+    public void putSet(String key, Set<String> sets) {
         mmkv.encode(key, sets);
     }
 
-    public static void putParcelable(String key, Parcelable obj) {
+    public void putParcelable(String key, Parcelable obj) {
         mmkv.encode(key, obj);
     }
 
-    public static Integer getInt(String key) {
+    public Integer getInt(String key) {
         return mmkv.decodeInt(key, 0);
     }
 
-    public static Integer getInt(String key, int defaultValue) {
+    public Integer getInt(String key, int defaultValue) {
         return mmkv.decodeInt(key, defaultValue);
     }
 
-    public static Double getDouble(String key) {
+    public Double getDouble(String key) {
         return mmkv.decodeDouble(key, 0.00);
     }
 
-    public static Double getDouble(String key, double defaultValue) {
+    public Double getDouble(String key, double defaultValue) {
         return mmkv.decodeDouble(key, defaultValue);
     }
 
-    public static Long getLong(String key) {
+    public Long getLong(String key) {
         return mmkv.decodeLong(key, 0L);
     }
 
-    public static Long getLong(String key, long defaultValue) {
+    public Long getLong(String key, long defaultValue) {
         return mmkv.decodeLong(key, defaultValue);
     }
 
-    public static Boolean getBoolean(String key) {
+    public Boolean getBoolean(String key) {
         return mmkv.decodeBool(key, false);
     }
 
-    public static Boolean getBoolean(String key, boolean defaultValue) {
+    public Boolean getBoolean(String key, boolean defaultValue) {
         return mmkv.decodeBool(key, defaultValue);
     }
 
-    public static Float getFloat(String key) {
+    public Float getFloat(String key) {
         return mmkv.decodeFloat(key, 0F);
     }
 
-    public static Float getFloat(String key, float defaultValue) {
+    public Float getFloat(String key, float defaultValue) {
         return mmkv.decodeFloat(key, defaultValue);
     }
 
-    public static byte[] getBytes(String key) {
+    public byte[] getBytes(String key) {
         return mmkv.decodeBytes(key);
     }
 
-    public static byte[] getBytes(String key, byte[] defaultValue) {
+    public byte[] getBytes(String key, byte[] defaultValue) {
         return mmkv.decodeBytes(key, defaultValue);
     }
 
-    public static String getString(String key) {
+    public String getString(String key) {
         return mmkv.decodeString(key, "");
     }
 
-    public static String getString(String key, String defaultValue) {
+    public String getString(String key, String defaultValue) {
         return mmkv.decodeString(key, defaultValue);
     }
 
-    public static Set<String> getStringSet(String key) {
+    public Set<String> getStringSet(String key) {
         return mmkv.decodeStringSet(key, Collections.<String>emptySet());
     }
 
-    public static Parcelable getParcelable(String key) {
+    public Parcelable getParcelable(String key) {
         return mmkv.decodeParcelable(key, null);
     }
 
@@ -136,14 +139,14 @@ public class MVUtils {
      *
      * @param key
      */
-    public static void removeKey(String key) {
+    public void removeKey(String key) {
         mmkv.removeValueForKey(key);
     }
 
     /**
      * 清除所有key
      */
-    public static void clearAll() {
+    public void clearAll() {
         mmkv.clearAll();
     }
 }

@@ -1,6 +1,7 @@
 package com.llw.mvvm.repository;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
@@ -17,12 +18,18 @@ import com.llw.mvvm.network.utils.DateUtil;
 import com.llw.mvvm.network.utils.KLog;
 import com.llw.mvvm.utils.Constant;
 import com.llw.mvvm.utils.MVUtils;
+import com.llw.mvvm.utils.MVUtilsEntryPoint;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.EntryPointAccessors;
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
+
+import static com.llw.mvvm.BaseApplication.getContext;
 
 /**
  * 对新闻数据进行处理
@@ -37,6 +44,15 @@ public class NewsRepository {
     final MutableLiveData<NewsResponse> news = new MutableLiveData<>();
 
     public final MutableLiveData<String> failed = new MutableLiveData<>();
+    private final MVUtils mvUtils;
+
+    @Inject
+    NewsRepository() {
+        //获取mvUtils
+        MVUtilsEntryPoint entryPoint =
+                EntryPointAccessors.fromApplication(getContext(), MVUtilsEntryPoint.class);
+        mvUtils = entryPoint.getMVUtils();
+    }
 
     /**
      * 获取新闻数据
@@ -44,8 +60,8 @@ public class NewsRepository {
      */
     public MutableLiveData<NewsResponse> getNews() {
         //今日此接口是否已经请求
-        if (MVUtils.getBoolean(Constant.IS_TODAY_REQUEST_NEWS)) {
-            if (DateUtil.getTimestamp() <= MVUtils.getLong(Constant.REQUEST_TIMESTAMP_NEWS)) {
+        if (mvUtils.getBoolean(Constant.IS_TODAY_REQUEST_NEWS)) {
+            if (DateUtil.getTimestamp() <= mvUtils.getLong(Constant.REQUEST_TIMESTAMP_NEWS)) {
                 getNewsForLocalDB();
             } else {
                 getNewsForNetwork();
@@ -113,8 +129,8 @@ public class NewsRepository {
      * 保存热门壁纸数据
      */
     private void saveNews(NewsResponse newsResponse) {
-        MVUtils.put(Constant.IS_TODAY_REQUEST_NEWS, true);
-        MVUtils.put(Constant.REQUEST_TIMESTAMP_NEWS, DateUtil.getMillisNextEarlyMorning());
+        mvUtils.put(Constant.IS_TODAY_REQUEST_NEWS, true);
+        mvUtils.put(Constant.REQUEST_TIMESTAMP_NEWS, DateUtil.getMillisNextEarlyMorning());
 
         Completable deleteAll = BaseApplication.getDb().newsDao().deleteAll();
         CustomDisposable.addDisposable(deleteAll, () -> {

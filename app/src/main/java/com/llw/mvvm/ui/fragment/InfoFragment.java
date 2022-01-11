@@ -20,10 +20,13 @@ import com.llw.mvvm.ui.adapter.InfoFragmentAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
 /**
  * 资讯  包含新闻、视频
  * @author llw
  */
+@AndroidEntryPoint
 public class InfoFragment extends BaseFragment {
 
 

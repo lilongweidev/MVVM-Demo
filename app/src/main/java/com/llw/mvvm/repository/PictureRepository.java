@@ -7,6 +7,8 @@ import com.llw.mvvm.db.bean.WallPaper;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.reactivex.Flowable;
 import io.reactivex.functions.Consumer;
 
@@ -21,6 +23,9 @@ public class PictureRepository {
     private final MutableLiveData<List<WallPaper>> wallPaper = new MutableLiveData<>();
 
     public final MutableLiveData<String> failed = new MutableLiveData<>();
+
+    @Inject
+    PictureRepository(){}
 
     public MutableLiveData<List<WallPaper>> getWallPaper() {
         Flowable<List<WallPaper>> listFlowable = BaseApplication.getDb().wallPaperDao().getAll();

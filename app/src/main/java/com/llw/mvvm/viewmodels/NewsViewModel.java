@@ -1,5 +1,6 @@
 package com.llw.mvvm.viewmodels;
 
+import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -15,8 +16,14 @@ public class NewsViewModel extends BaseViewModel {
 
     public LiveData<NewsResponse> news;
 
+    private final NewsRepository newsRepository;
+
+    @ViewModelInject
+    public NewsViewModel(NewsRepository newsRepository) {
+        this.newsRepository = newsRepository;
+    }
+
     public void getNews() {
-        NewsRepository newsRepository = new NewsRepository();
         failed = newsRepository.failed;
         news = newsRepository.getNews();
     }

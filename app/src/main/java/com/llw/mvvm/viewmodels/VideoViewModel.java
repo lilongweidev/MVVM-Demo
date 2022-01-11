@@ -1,5 +1,6 @@
 package com.llw.mvvm.viewmodels;
 
+import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -13,10 +14,17 @@ import com.llw.mvvm.repository.VideoRepository;
  */
 public class VideoViewModel extends BaseViewModel {
 
+
     public LiveData<VideoResponse> video;
 
+    private final VideoRepository videoRepository;
+
+    @ViewModelInject
+    VideoViewModel(VideoRepository videoRepository) {
+        this.videoRepository = videoRepository;
+    }
+
     public void getVideo() {
-        VideoRepository videoRepository = new VideoRepository();
         failed = videoRepository.failed;
         video = videoRepository.getVideo();
     }

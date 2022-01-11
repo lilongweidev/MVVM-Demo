@@ -11,11 +11,14 @@ import com.llw.mvvm.ui.adapter.ImageAdapter;
 import com.llw.mvvm.databinding.ActivityPictureViewBinding;
 import com.llw.mvvm.viewmodels.PictureViewModel;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
 /**
  * 图片查看
  *
  * @author llw
  */
+@AndroidEntryPoint
 public class PictureViewActivity extends AppCompatActivity {
 
     private PictureViewModel viewModel;

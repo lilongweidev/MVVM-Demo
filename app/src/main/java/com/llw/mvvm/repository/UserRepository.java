@@ -18,6 +18,8 @@ import com.llw.mvvm.utils.MVUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.functions.Action;
@@ -30,19 +32,8 @@ import io.reactivex.functions.Consumer;
  */
 public class UserRepository {
 
-    private static volatile UserRepository mInstance;
-
-    public static UserRepository getInstance() {
-        if (mInstance == null) {
-            synchronized (UserRepository.class) {
-                if (mInstance == null) {
-                    mInstance = new UserRepository();
-                }
-            }
-        }
-        return mInstance;
-    }
-
+    @Inject
+    UserRepository() {}
 
     private static final String TAG = UserRepository.class.getSimpleName();
     private final MutableLiveData<User> userMutableLiveData = new MutableLiveData<>();

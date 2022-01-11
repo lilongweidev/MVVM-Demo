@@ -11,11 +11,14 @@ import com.llw.mvvm.databinding.ActivityRegisterBinding;
 import com.llw.mvvm.db.bean.User;
 import com.llw.mvvm.viewmodels.RegisterViewModel;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
 /**
  * 注册
  *
  * @author llw
  */
+@AndroidEntryPoint
 public class RegisterActivity extends BaseActivity {
 
     private static final String TAG = RegisterActivity.class.getSimpleName();

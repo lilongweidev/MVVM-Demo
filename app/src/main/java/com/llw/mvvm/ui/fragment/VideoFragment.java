@@ -27,10 +27,13 @@ import com.llw.mvvm.viewmodels.VideoViewModel;
 
 import org.jetbrains.annotations.NotNull;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
 /**
  * 视频
  * @author llw
  */
+@AndroidEntryPoint
 public class VideoFragment extends BaseFragment {
 
     private VideoFragmentBinding binding;

@@ -56,13 +56,21 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.AndroidEntryPoint;
+
 /**
  * 主页面
  *
  * @author llw
  */
 @SuppressLint("NonConstantResourceId")
+@AndroidEntryPoint
 public class HomeActivity extends BaseActivity {
+
+    @Inject
+    MVUtils mvUtils;
 
     private static final String TAG = HomeActivity.class.getSimpleName();
 
@@ -364,7 +372,7 @@ public class HomeActivity extends BaseActivity {
      */
     private void logout() {
         showMsg("退出登录");
-        MVUtils.put(Constant.IS_LOGIN, false);
+        mvUtils.put(Constant.IS_LOGIN, false);
         jumpActivityFinish(LoginActivity.class);
     }
 

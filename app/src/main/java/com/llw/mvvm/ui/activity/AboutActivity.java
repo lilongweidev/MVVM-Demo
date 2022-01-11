@@ -5,9 +5,7 @@ import android.content.ClipboardManager;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
 import androidx.databinding.DataBindingUtil;
-
 import com.llw.mvvm.R;
 import com.llw.mvvm.databinding.ActivityAboutBinding;
 import com.llw.mvvm.utils.APKVersionInfoUtils;
@@ -19,27 +17,23 @@ import com.llw.mvvm.utils.APKVersionInfoUtils;
  */
 public class AboutActivity extends BaseActivity {
 
-    private ActivityAboutBinding binding;
-    private ClipboardManager myClipboard;
-    private ClipData myClip;
-
     /**
      * 博客个人主页
      */
-    private String CSDN = "https://llw-study.blog.csdn.net/";
+    private final String CSDN = "https://llw-study.blog.csdn.net/";
     /**
      * 博客地址
      */
-    private String CSDN_BLOG_URL = "https://blog.csdn.net/qq_38436214/category_11482619.html";
+    private final String CSDN_BLOG_URL = "https://blog.csdn.net/qq_38436214/category_11482619.html";
     /**
      * 源码地址
      */
-    private String GITHUB_URL = "https://github.com/lilongweidev/MVVM-Demo";
+    private final String GITHUB_URL = "https://github.com/lilongweidev/MVVM-Demo";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_about);
+        ActivityAboutBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_about);
         back(binding.toolbar);
         binding.tvVersion.setText(APKVersionInfoUtils.getVerName(context));
         binding.tvBlog.setOnClickListener(v -> jumpUrl(CSDN_BLOG_URL));
@@ -59,8 +53,8 @@ public class AboutActivity extends BaseActivity {
     }
 
     private void copyEmail() {
-        myClipboard = (ClipboardManager) context.getSystemService(CLIPBOARD_SERVICE);
-        myClip = ClipData.newPlainText("text", "lonelyholiday@qq.com");
+        ClipboardManager myClipboard = (ClipboardManager) context.getSystemService(CLIPBOARD_SERVICE);
+        ClipData myClip = ClipData.newPlainText("text", "lonelyholiday@qq.com");
         myClipboard.setPrimaryClip(myClip);
         showMsg("邮箱已复制");
     }

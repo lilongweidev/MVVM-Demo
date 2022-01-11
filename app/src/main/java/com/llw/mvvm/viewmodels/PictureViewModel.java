@@ -1,5 +1,6 @@
 package com.llw.mvvm.viewmodels;
 
+import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -17,10 +18,15 @@ import java.util.List;
  */
 public class PictureViewModel extends BaseViewModel {
 
+    private final PictureRepository pictureRepository;
     public LiveData<List<WallPaper>> wallPaper;
 
+    @ViewModelInject
+    PictureViewModel(PictureRepository pictureRepository){
+        this.pictureRepository = pictureRepository;
+    }
+
     public void getWallPaper() {
-        PictureRepository pictureRepository = new PictureRepository();
         failed = pictureRepository.failed;
         wallPaper = pictureRepository.getWallPaper();
     }

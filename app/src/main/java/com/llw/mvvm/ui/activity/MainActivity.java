@@ -18,11 +18,14 @@ import com.llw.mvvm.ui.adapter.WallPaperAdapter;
 import com.llw.mvvm.databinding.ActivityMainBinding;
 import com.llw.mvvm.viewmodels.MainViewModel;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
 /**
  * 主页面
  *
  * @author llw
  */
+@AndroidEntryPoint
 public class MainActivity extends BaseActivity {
 
     private ActivityMainBinding dataBinding;

@@ -4,20 +4,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 import android.widget.Toast;
-
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder;
 import com.llw.mvvm.R;
-import com.llw.mvvm.databinding.ItemNewsBinding;
 import com.llw.mvvm.databinding.ItemVideoBinding;
-import com.llw.mvvm.model.NewsResponse;
 import com.llw.mvvm.model.VideoResponse;
-import com.llw.mvvm.ui.activity.PlayActivity;
-import com.llw.mvvm.ui.activity.WebActivity;
-
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
 import java.util.List;
 
 /**

@@ -1,12 +1,6 @@
 package com.llw.mvvm.ui.activity;
 
 import android.app.Activity;
-import android.content.Context;
-
-import androidx.room.Room;
-
-import com.llw.mvvm.db.AppDatabase;
-
 import java.util.ArrayList;
 import java.util.List;
 

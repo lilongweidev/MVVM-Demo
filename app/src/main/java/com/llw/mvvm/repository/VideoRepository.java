@@ -14,12 +14,18 @@ import com.llw.mvvm.network.NetworkApi;
 import com.llw.mvvm.network.utils.DateUtil;
 import com.llw.mvvm.utils.Constant;
 import com.llw.mvvm.utils.MVUtils;
+import com.llw.mvvm.utils.MVUtilsEntryPoint;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.EntryPointAccessors;
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
+
+import static com.llw.mvvm.BaseApplication.getContext;
 
 /**
  * 对视频数据进行处理
@@ -35,6 +41,15 @@ public class VideoRepository {
     final MutableLiveData<VideoResponse> video = new MutableLiveData<>();
 
     public final MutableLiveData<String> failed = new MutableLiveData<>();
+    private final MVUtils mvUtils;
+
+    @Inject
+    VideoRepository(){
+        //获取mvUtils
+        MVUtilsEntryPoint entryPoint =
+                EntryPointAccessors.fromApplication(getContext(), MVUtilsEntryPoint.class);
+        mvUtils = entryPoint.getMVUtils();
+    }
 
     /**
      * 获取视频数据
@@ -42,8 +57,8 @@ public class VideoRepository {
      */
     public MutableLiveData<VideoResponse> getVideo() {
         //今日此接口是否已经请求
-        if (MVUtils.getBoolean(Constant.IS_TODAY_REQUEST_VIDEO)) {
-            if (DateUtil.getTimestamp() <= MVUtils.getLong(Constant.REQUEST_TIMESTAMP_VIDEO)) {
+        if (mvUtils.getBoolean(Constant.IS_TODAY_REQUEST_VIDEO)) {
+            if (DateUtil.getTimestamp() <= mvUtils.getLong(Constant.REQUEST_TIMESTAMP_VIDEO)) {
                 getVideoForLocalDB();
             } else {
                 getVideoForNetwork();
@@ -107,8 +122,8 @@ public class VideoRepository {
      * 保存热门壁纸数据
      */
     private void saveVideo(VideoResponse videoResponse) {
-        MVUtils.put(Constant.IS_TODAY_REQUEST_VIDEO, true);
-        MVUtils.put(Constant.REQUEST_TIMESTAMP_VIDEO, DateUtil.getMillisNextEarlyMorning());
+        mvUtils.put(Constant.IS_TODAY_REQUEST_VIDEO, true);
+        mvUtils.put(Constant.REQUEST_TIMESTAMP_VIDEO, DateUtil.getMillisNextEarlyMorning());
 
         Completable deleteAll = BaseApplication.getDb().videoDao().deleteAll();
         CustomDisposable.addDisposable(deleteAll, () -> {

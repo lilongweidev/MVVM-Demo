@@ -11,12 +11,20 @@ import com.llw.mvvm.utils.Constant;
 import com.llw.mvvm.utils.EasyAnimation;
 import com.llw.mvvm.utils.MVUtils;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.AndroidEntryPoint;
+
 /**
  * 欢迎页面
  *
  * @author llw
  */
+@AndroidEntryPoint
 public class SplashActivity extends BaseActivity {
+
+    @Inject
+    MVUtils mvUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +33,7 @@ public class SplashActivity extends BaseActivity {
         setStatusBar(true);
         EasyAnimation.moveViewWidth(binding.tvTranslate, () -> {
             binding.tvMvvm.setVisibility(View.VISIBLE);
-            jumpActivityFinish(MVUtils.getBoolean(Constant.IS_LOGIN) ? MainActivity.class : LoginActivity.class);
+            jumpActivityFinish(mvUtils.getBoolean(Constant.IS_LOGIN) ? MainActivity.class : LoginActivity.class);
         });
     }
 }

@@ -23,10 +23,13 @@ import com.llw.mvvm.model.NewsResponse;
 import com.llw.mvvm.ui.adapter.NewsAdapter;
 import com.llw.mvvm.viewmodels.NewsViewModel;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
 /**
  * 新闻
  * @author llw
  */
+@AndroidEntryPoint
 public class NewsFragment extends BaseFragment {
 
     private NewsFragmentBinding binding;

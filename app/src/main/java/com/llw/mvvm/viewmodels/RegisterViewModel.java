@@ -2,6 +2,7 @@ package com.llw.mvvm.viewmodels;
 
 import android.util.Log;
 
+import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.MutableLiveData;
 
 import com.google.gson.Gson;
@@ -15,6 +16,7 @@ import com.llw.mvvm.repository.UserRepository;
  */
 public class RegisterViewModel extends BaseViewModel {
 
+    private final UserRepository userRepository;
     public MutableLiveData<User> user;
 
 
@@ -25,11 +27,15 @@ public class RegisterViewModel extends BaseViewModel {
         return user;
     }
 
+    @ViewModelInject
+    RegisterViewModel(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     /**
      * 注册
      */
     public void register() {
-        UserRepository userRepository = new UserRepository();
         failed = userRepository.failed;
         user.getValue().setUid(1);
         Log.d("TAG", "register: "+new Gson().toJson(user.getValue()));

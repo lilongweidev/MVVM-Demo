@@ -19,6 +19,8 @@ import com.llw.mvvm.utils.MVUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
 
@@ -34,6 +36,9 @@ public class WebRepository {
     final MutableLiveData<NewsDetailResponse> newsDetail = new MutableLiveData<>();
 
     public final MutableLiveData<String> failed = new MutableLiveData<>();
+
+    @Inject
+    WebRepository(){}
 
     /**
      * 获取新闻详情数据
