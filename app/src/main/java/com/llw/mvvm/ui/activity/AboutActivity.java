@@ -33,7 +33,10 @@ public class AboutActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityAboutBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_about);
+        ActivityAboutBinding binding = ActivityAboutBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        //ActivityAboutBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_about);
         back(binding.toolbar);
         binding.tvVersion.setText(APKVersionInfoUtils.getVerName(context));
         binding.tvBlog.setOnClickListener(v -> jumpUrl(CSDN_BLOG_URL));

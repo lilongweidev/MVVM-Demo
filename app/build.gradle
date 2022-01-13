@@ -51,6 +51,11 @@ android {
         dataBinding true
     }
 
+    //启用ViewBinding
+    buildFeatures {
+        viewBinding true
+    }
+
     defaultConfig {
         ndk {
             //设置支持的SO库架构
