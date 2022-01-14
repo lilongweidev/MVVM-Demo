@@ -13,8 +13,8 @@ android {
         applicationId "com.llw.mvvm"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 9
-        versionName "1.9"
+        versionCode 20
+        versionName "2.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJU=nitRunner"
 
@@ -37,7 +37,7 @@ android {
     // 自定义打包名称
     android.applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = "MVVM-Demo_9.apk"
+            outputFileName = "MVVM-Demo_10.apk"
         }
     }
 

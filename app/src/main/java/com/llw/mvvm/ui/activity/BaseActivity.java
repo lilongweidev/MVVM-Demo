@@ -9,6 +9,11 @@ import android.provider.Settings;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -169,11 +174,11 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     /**
-     * 请求外部存储管理 Android11版本时获取文件读写权限时调用
+     * 请求外部存储管理 Android11版本时获取文件读写权限时调用 新的方式
      */
-    protected void requestManageExternalStorage() {
+    protected void requestManageExternalStorage(ActivityResultLauncher<Intent> intentActivityResultLauncher) {
         Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
         intent.setData(Uri.parse("package:" + getPackageName()));
-        startActivityForResult(intent, PermissionUtils.REQUEST_MANAGE_EXTERNAL_STORAGE_CODE);
+        intentActivityResultLauncher.launch(intent);
     }
 }
