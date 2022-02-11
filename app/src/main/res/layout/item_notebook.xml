@@ -17,7 +17,7 @@
         android:foreground="?attr/selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_margin="@dimen/dp_4"
         android:background="@drawable/shape_bg_white_radius_12"
         android:onClick="@{() -> onClick.itemClick(notebook,detail)}"
         android:padding="12dp">

@@ -51,4 +51,9 @@ public class Constant {
      */
     public static final String REQUEST_TIMESTAMP_VIDEO = "videoRequestTimestamp";
 
+    /**
+     * 笔记页面视图方式
+     */
+    public static final String NOTEBOOK_VIEW_TYPE = "notebookViewType";
+
 }
