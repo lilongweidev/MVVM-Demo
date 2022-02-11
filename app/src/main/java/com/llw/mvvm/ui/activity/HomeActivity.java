@@ -200,6 +200,9 @@ public class HomeActivity extends BaseActivity {
         binding.ivAvatar.setOnClickListener(v -> binding.drawerLayout.open());
         binding.navView.setNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
+                case R.id.item_notebook://记事本
+                    jumpActivity(NotebookActivity.class);
+                    break;
                 case R.id.item_setting:
 
                     break;

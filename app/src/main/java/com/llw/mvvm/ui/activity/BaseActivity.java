@@ -83,7 +83,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     protected void backAndFinish(Toolbar toolbar) {
-        toolbar.setNavigationOnClickListener(v -> onBackPressed());
+        toolbar.setNavigationOnClickListener(v -> finish());
     }
 
     /**

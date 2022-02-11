@@ -11,11 +11,13 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.llw.mvvm.db.bean.Image;
 import com.llw.mvvm.db.bean.News;
+import com.llw.mvvm.db.bean.Notebook;
 import com.llw.mvvm.db.bean.User;
 import com.llw.mvvm.db.bean.Video;
 import com.llw.mvvm.db.bean.WallPaper;
 import com.llw.mvvm.db.dao.ImageDao;
 import com.llw.mvvm.db.dao.NewsDao;
+import com.llw.mvvm.db.dao.NotebookDao;
 import com.llw.mvvm.db.dao.UserDao;
 import com.llw.mvvm.db.dao.VideoDao;
 import com.llw.mvvm.db.dao.WallPaperDao;
@@ -32,7 +34,8 @@ import org.jetbrains.annotations.NotNull;
         WallPaper.class,
         News.class,
         Video.class,
-        User.class}, version = 5, exportSchema = false)
+        User.class,
+        Notebook.class}, version = 6, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static final String DATABASE_NAME = "mvvm_demo";
@@ -51,6 +54,7 @@ public abstract class AppDatabase extends RoomDatabase {
                             .addMigrations(MIGRATION_2_3)
                             .addMigrations(MIGRATION_3_4)
                             .addMigrations(MIGRATION_4_5)
+                            .addMigrations(MIGRATION_5_6)
                             .build();
                 }
             }
@@ -67,6 +71,23 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract VideoDao videoDao();
 
     public abstract UserDao userDao();
+
+    public abstract NotebookDao notebookDao();
+
+    /**
+     * 版本升级迁移到6 在数据库中新增一个笔记表
+     */
+    static final Migration MIGRATION_5_6 = new Migration(5, 6) {
+        @Override
+        public void migrate(@NonNull @NotNull SupportSQLiteDatabase database) {
+            //创建笔记表
+            database.execSQL("CREATE TABLE `notebook` " +
+                    "(uid INTEGER NOT NULL, " +
+                    "title TEXT, " +
+                    "content TEXT, " +
+                    "PRIMARY KEY(`uid`))");
+        }
+    };
 
     /**
      * 版本升级迁移到5 在用户表中新增一个avatar字段

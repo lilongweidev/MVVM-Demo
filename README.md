@@ -4,6 +4,12 @@ MVVM-Demo
 ## 扫码下载
 ![下载图片](https://github.com/lilongweidev/MVVM-Demo/blob/master/apk/code.png)<br>
 
+## Step11
+
+Android MVVM框架使用（十一）（功能开发）记事本
+
+对应的apk:MVVM-Demo_11.apk
+
 ## Step10
 
 Android MVVM框架搭建（十）Hilt、ViewBinding、Activity Result API

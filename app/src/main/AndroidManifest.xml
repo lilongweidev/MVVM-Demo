@@ -30,7 +30,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MVVMDemo"
         tools:targetApi="n">
-        <activity android:name=".ui.activity.AboutActivity"></activity>
+        <activity android:name=".ui.activity.EditActivity"
+            android:theme="@style/SplashTheme"/>
+        <activity
+            android:name=".ui.activity.NotebookActivity"
+            android:theme="@style/SplashTheme" />
+        <activity android:name=".ui.activity.AboutActivity" />
         <activity android:name=".ui.activity.RegisterActivity" />
         <activity
             android:name=".ui.activity.PlayActivity"

@@ -71,7 +71,7 @@ public class UserRepository {
     }
 
     /**
-     * 保存热门壁纸数据
+     * 保存用户
      */
     public void saveUser(User user) {
         Completable deleteAll = BaseApplication.getDb().userDao().deleteAll();
