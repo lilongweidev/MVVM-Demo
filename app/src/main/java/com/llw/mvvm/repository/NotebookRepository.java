@@ -93,7 +93,7 @@ public class NotebookRepository {
     /**
      * 删除笔记
      */
-    public void deleteNotebook(Notebook notebook) {
+    public void deleteNotebook(Notebook... notebook) {
         Completable delete = BaseApplication.getDb().notebookDao().delete(notebook);
         CustomDisposable.addDisposable(delete, () -> {
             Log.d(TAG, "deleteNotebook: " + "删除成功");

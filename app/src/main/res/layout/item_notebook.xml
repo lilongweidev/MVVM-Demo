@@ -7,25 +7,31 @@
             name="notebook"
             type="com.llw.mvvm.db.bean.Notebook" />
 
+        <!--是否批量删除-->
         <variable
-            name="onClick"
-            type="com.llw.mvvm.ui.adapter.NotebookAdapter.ClickBinding" />
+            name="isBatchDeletion"
+            type="Boolean" />
+        <!--视图，用于控制显示隐藏-->
+        <import type="android.view.View" />
+        <!--用于加载mipmap中的图标-->
+        <import type="androidx.core.content.ContextCompat"/>
+        <!--R文件-->
+        <import type="com.llw.mvvm.R"/>
     </data>
 
     <RelativeLayout
-        android:id="@+id/detail"
-        android:foreground="?attr/selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dp_4"
         android:background="@drawable/shape_bg_white_radius_12"
-        android:onClick="@{() -> onClick.itemClick(notebook,detail)}"
+        android:foreground="?attr/selectableItemBackground"
         android:padding="12dp">
 
         <TextView
             android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/iv_check"
             android:ellipsize="end"
             android:singleLine="true"
             android:text="@{notebook.title}"
@@ -34,13 +40,24 @@
 
         <TextView
             android:id="@+id/tv_content"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_title"
             android:layout_marginTop="4dp"
+            android:layout_toStartOf="@+id/iv_check"
             android:ellipsize="end"
             android:maxLines="3"
             android:text="@{notebook.content}"
             android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/iv_check"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="6dp"
+            android:src="@{notebook.select ? ContextCompat.getDrawable(ivCheck.getContext(),R.mipmap.ic_selected) : ContextCompat.getDrawable(ivCheck.getContext(),R.mipmap.ic_select)}"
+            android:visibility="@{isBatchDeletion ? View.VISIBLE : View.GONE}" />
     </RelativeLayout>
 </layout>

@@ -3,9 +3,7 @@
     <item
         android:id="@+id/item_view_type"
         android:title="宫格视图" />
-
     <item
         android:id="@+id/item_batch_deletion"
         android:title="批量删除" />
-
 </menu>

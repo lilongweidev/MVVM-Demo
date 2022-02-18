@@ -28,4 +28,12 @@ public class NotebookViewModel extends BaseViewModel {
         notebooks = notebookRepository.getNotebooks();
         failed = notebookRepository.failed;
     }
+
+    /**
+     * 删除笔记
+     */
+    public void deleteNotebook(Notebook... notebook) {
+        notebookRepository.deleteNotebook(notebook);
+        failed = notebookRepository.failed;
+    }
 }

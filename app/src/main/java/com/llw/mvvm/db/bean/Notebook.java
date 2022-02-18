@@ -15,6 +15,8 @@ public class Notebook {
     private int uid;
     private String title;
     private String content;
+    @Ignore
+    private boolean isSelect;//是否选中
 
     public int getUid() {
         return uid;
@@ -38,6 +40,14 @@ public class Notebook {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public boolean isSelect() {
+        return isSelect;
+    }
+
+    public void setSelect(boolean select) {
+        isSelect = select;
     }
 
     @Ignore

@@ -21,6 +21,16 @@ import java.util.List;
  */
 public class NotebookAdapter extends BaseQuickAdapter<Notebook, BaseDataBindingHolder<ItemNotebookBinding>> {
 
+    //是否批量删除
+    private boolean isBatchDeletion;
+
+    /**
+     * 设置批量删除
+     */
+    public void setBatchDeletion(boolean batchDeletion) {
+        isBatchDeletion = batchDeletion;
+    }
+
     public NotebookAdapter(@Nullable List<Notebook> data) {
         super(R.layout.item_notebook, data);
     }
@@ -30,16 +40,8 @@ public class NotebookAdapter extends BaseQuickAdapter<Notebook, BaseDataBindingH
         ItemNotebookBinding binding = bindingHolder.getDataBinding();
         if (binding != null) {
             binding.setNotebook(notebook);
-            binding.setOnClick(new NotebookAdapter.ClickBinding());
+            binding.setIsBatchDeletion(isBatchDeletion);
             binding.executePendingBindings();
-        }
-    }
-
-    public static class ClickBinding {
-        public void itemClick(Notebook notebook, View view) {
-            Intent intent = new Intent(view.getContext(), EditActivity.class);
-            intent.putExtra("uid", notebook.getUid());
-            view.getContext().startActivity(intent);
         }
     }
 }

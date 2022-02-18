@@ -37,6 +37,6 @@ public interface NotebookDao {
     Completable insert(Notebook notebook);
 
     @Delete
-    Completable delete(Notebook notebook);
+    Completable delete(Notebook... notebook);
 
 }
