@@ -100,4 +100,20 @@ public class NotebookRepository {
             failed.postValue("200");
         });
     }
+
+    /**
+     * 搜索笔记
+     */
+    public MutableLiveData<List<Notebook>> searchNotebook(String input) {
+        Flowable<List<Notebook>> listFlowable = BaseApplication.getDb().notebookDao().searchNotebook(input);
+        CustomDisposable.addDisposable(listFlowable, notebooks -> {
+            if (notebooks.size() > 0) {
+                notebooksMutableLiveData.postValue(notebooks);
+            } else {
+                notebooksMutableLiveData.postValue(emptyList);
+                failed.postValue("暂无数据");
+            }
+        });
+        return notebooksMutableLiveData;
+    }
 }

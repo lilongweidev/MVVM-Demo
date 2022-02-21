@@ -30,6 +30,10 @@ public interface NotebookDao {
     @Query("SELECT * FROM notebook WHERE uid=:uid")
     Flowable<Notebook> findById(int uid);
 
+    // ||相当于+号
+    @Query("SELECT * FROM notebook WHERE title LIKE '%' || :input || '%' OR content LIKE '%' || :input || '%' ")
+    Flowable<List<Notebook>> searchNotebook(String input);
+
     @Update
     Completable update(Notebook notebook);
 

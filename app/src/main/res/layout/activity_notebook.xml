@@ -19,9 +19,17 @@
             name="isAllSelected"
             type="Boolean" />
         <!--用于加载mipmap中的图标-->
-        <import type="androidx.core.content.ContextCompat"/>
+        <import type="androidx.core.content.ContextCompat" />
         <!--R文件-->
-        <import type="com.llw.mvvm.R"/>
+        <import type="com.llw.mvvm.R" />
+        <!--是否显示输入布局-->
+        <variable
+            name="showSearchLay"
+            type="Boolean" />
+        <!--输入框是否有内容-->
+        <variable
+            name="isSearch"
+            type="Boolean" />
     </data>
 
     <RelativeLayout
@@ -55,16 +63,62 @@
             android:layout_below="@+id/toolbar"
             android:background="@color/gray_white"
             android:orientation="vertical">
+            <!--搜索笔记布局，有笔记时显示-->
+            <LinearLayout
+                android:id="@+id/lay_search"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:visibility="@{showSearchLay ? View.VISIBLE : View.GONE}">
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:background="@drawable/shape_search_bg"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/ic_search" />
+
+                    <EditText
+                        android:id="@+id/et_search"
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginEnd="32dp"
+                        android:background="@null"
+                        android:hint="搜索笔记"
+                        android:textColor="@color/black"
+                        android:textCursorDrawable="@drawable/custom_cursor"
+                        android:textSize="@dimen/sp_14" />
+
+                    <ImageView
+                        android:id="@+id/iv_clear"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/ic_clear"
+                        android:visibility="@{isSearch ? View.VISIBLE : View.GONE}" />
+                </RelativeLayout>
+            </LinearLayout>
             <!--笔记列表-->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_notebook"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_below="@+id/lay_search"
                 android:overScrollMode="never"
                 android:padding="4dp"
                 android:visibility="@{hasNotebook ? View.VISIBLE : View.GONE}" />
-
             <!--没有记录布局-->
             <LinearLayout
                 android:id="@+id/lay_no_record"
@@ -119,6 +173,7 @@
                 android:gravity="center"
                 android:text="删除"
                 android:textColor="@color/black" />
+
             <TextView
                 android:id="@+id/tv_all_selected"
                 android:layout_width="0dp"
@@ -129,6 +184,5 @@
                 android:text="@{isAllSelected ? `取消全选` : `全选`}"
                 android:textColor="@{isAllSelected ? @color/purple_500 : @color/black}" />
         </LinearLayout>
-
     </RelativeLayout>
 </layout>

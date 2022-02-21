@@ -36,4 +36,13 @@ public class NotebookViewModel extends BaseViewModel {
         notebookRepository.deleteNotebook(notebook);
         failed = notebookRepository.failed;
     }
+
+    /**
+     * 搜索笔记
+     * @param input 输入内容
+     */
+    public void searchNotebook(String input) {
+        notebooks = notebookRepository.searchNotebook(input);
+        failed = notebookRepository.failed;
+    }
 }

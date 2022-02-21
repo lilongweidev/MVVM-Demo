@@ -47,6 +47,7 @@
             android:layout_toStartOf="@+id/iv_check"
             android:ellipsize="end"
             android:maxLines="3"
+            android:textColor="@color/dark_gray"
             android:text="@{notebook.content}"
             android:textSize="14sp" />
 
