@@ -4,6 +4,7 @@ MVVM-Demo
 ## 扫码下载
 ![下载图片](https://github.com/lilongweidev/MVVM-Demo/blob/master/apk/code.png)<br>
 
+
 ## Step12
 
 Android MVVM框架使用（十二）记事本功能增强：视图类型、批量删除、搜索笔记
