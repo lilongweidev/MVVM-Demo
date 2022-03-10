@@ -20,6 +20,6 @@
         android:layout_marginTop="10dp"
         android:maxLines="1"
         android:text="Loading..."
-        android:textColor="@color/purple_500"
+        android:textColor="@color/green"
         android:textSize="14sp" />
 </LinearLayout>

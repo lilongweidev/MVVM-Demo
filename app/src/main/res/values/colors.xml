@@ -14,4 +14,6 @@
     <color name="gray_white">#F8F8F8</color><!--灰白-->
     <color name="dark_gray">#8A8A8A</color><!--深灰-->
     <color name="search_gray">#EAEAEA</color><!--搜索框灰色-->
+
+    <color name="green">#2EAD4D</color><!--要想代码过得去，主题就要带点绿-->
 </resources>

@@ -53,12 +53,12 @@
             android:id="@+id/tv_sure"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:textColor="@color/purple_500"
             android:layout_below="@+id/v_line"
-            android:textSize="@dimen/sp_14"
             android:layout_toEndOf="@+id/tv_cancel"
             android:foreground="?attr/selectableItemBackground"
             android:gravity="center"
-            android:text="确定" />
+            android:text="确定"
+            android:textColor="@color/green"
+            android:textSize="@dimen/sp_14" />
     </RelativeLayout>
 </layout>

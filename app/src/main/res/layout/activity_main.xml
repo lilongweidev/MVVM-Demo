@@ -30,7 +30,7 @@
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
                 app:collapsedTitleGravity="center_horizontal"
-                app:contentScrim="@color/purple_500"
+                app:contentScrim="@color/green"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
                 app:title="MVVM"
                 app:toolbarId="@+id/toolbar">
@@ -77,10 +77,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
             android:layout_margin="20dp"
-            android:background="@color/purple_500"
+            android:background="@color/green"
             android:onClick="toHome"
             android:src="@mipmap/ic_home"
-            app:backgroundTint="@color/purple_500"
+            app:backgroundTint="@color/green"
             app:fabSize="auto"
             tools:ignore="UsingOnClickInXml"
             android:contentDescription="主页" />

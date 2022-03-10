@@ -19,7 +19,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/purple_500"
+            android:background="@color/green"
             app:navigationIcon="@drawable/ic_back_white">
 
             <TextView
@@ -38,7 +38,7 @@
             android:gravity="center"
             android:padding="24dp"
             android:text="MVVM"
-            android:textColor="@color/purple_500"
+            android:textColor="@color/green"
             android:textSize="48sp"
             android:textStyle="bold" />
 
@@ -70,7 +70,7 @@
                 android:layout_alignBottom="@+id/et_account_lay"
                 android:gravity="center"
                 android:text="*"
-                android:textColor="@color/purple_500"
+                android:textColor="@color/green"
                 android:textSize="24sp" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -98,7 +98,7 @@
                 android:layout_alignBottom="@+id/et_pwd_lay"
                 android:gravity="center"
                 android:text="*"
-                android:textColor="@color/purple_500"
+                android:textColor="@color/green"
                 android:textSize="24sp" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -158,7 +158,7 @@
                 android:layout_alignBottom="@+id/et_confirm_pwd_lay"
                 android:gravity="center"
                 android:text="*"
-                android:textColor="@color/purple_500"
+                android:textColor="@color/green"
                 android:textSize="24sp" />
 
             <com.google.android.material.button.MaterialButton

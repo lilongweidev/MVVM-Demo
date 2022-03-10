@@ -22,11 +22,11 @@
     <application
         android:name=".BaseApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_mvvm"
+        android:icon="@mipmap/ic_mvvm_logo"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_config"
         android:requestLegacyExternalStorage="true"
-        android:roundIcon="@mipmap/ic_mvvm"
+        android:roundIcon="@mipmap/ic_mvvm_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.MVVMDemo"
         tools:targetApi="n">
@@ -45,15 +45,6 @@
         <activity
             android:name=".ui.activity.WebActivity"
             android:theme="@style/SplashTheme" />
-        <activity
-            android:name=".ui.activity.SplashActivity"
-            android:theme="@style/SplashTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".ui.activity.LoginActivity" />
         <activity android:name=".ui.activity.HomeActivity" />
         <activity
@@ -62,6 +53,15 @@
         <activity
             android:name=".ui.activity.MainActivity"
             android:theme="@style/MainTheme" /> <!-- 腾讯WebView -->
+        <activity
+            android:name=".ui.activity.SplashActivity"
+            android:theme="@style/SplashThemePlus">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <service
             android:name="com.tencent.smtt.export.external.DexClassLoaderProviderService"
             android:label="dexopt"

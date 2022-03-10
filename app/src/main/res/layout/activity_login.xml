@@ -19,7 +19,7 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/purple_500">
+            android:background="@color/green">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -44,7 +44,7 @@
                 android:gravity="center"
                 android:padding="24dp"
                 android:text="MVVM"
-                android:textColor="@color/purple_500"
+                android:textColor="@color/green"
                 android:textSize="48sp"
                 android:textStyle="bold" />
 
@@ -110,7 +110,7 @@
                 <TextView
                     android:text="注册"
                     android:onClick="toRegister"
-                    android:textColor="@color/purple_500"
+                    android:textColor="@color/green"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:ignore="UsingOnClickInXml" />

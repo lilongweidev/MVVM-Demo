@@ -13,7 +13,7 @@
             android:gravity="center"
             android:padding="12dp"
             android:text="修改用户信息"
-            android:textColor="@color/purple_500"
+            android:textColor="@color/green"
             android:textSize="16sp" />
 
         <View
@@ -108,7 +108,7 @@
             android:gravity="center"
             android:padding="12dp"
             android:text="关闭"
-            android:textColor="@color/purple_500"
+            android:textColor="@color/green"
             android:textSize="16sp" />
     </LinearLayout>
 </layout>

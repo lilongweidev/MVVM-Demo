@@ -2,7 +2,9 @@ package com.llw.mvvm.ui.activity;
 
 import androidx.databinding.DataBindingUtil;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 
 import com.llw.mvvm.R;
@@ -29,11 +31,7 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivitySplashBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_splash);
-        setStatusBar(true);
-        EasyAnimation.moveViewWidth(binding.tvTranslate, () -> {
-            binding.tvMvvm.setVisibility(View.VISIBLE);
-            jumpActivityFinish(mvUtils.getBoolean(Constant.IS_LOGIN) ? MainActivity.class : LoginActivity.class);
-        });
+        setContentView(ActivitySplashBinding.inflate(getLayoutInflater()).getRoot());
+        new Handler().postDelayed(() -> jumpActivityFinish(mvUtils.getBoolean(Constant.IS_LOGIN) ? MainActivity.class : LoginActivity.class),400);
     }
 }
