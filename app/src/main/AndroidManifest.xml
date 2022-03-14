@@ -46,7 +46,8 @@
             android:name=".ui.activity.WebActivity"
             android:theme="@style/SplashTheme" />
         <activity android:name=".ui.activity.LoginActivity" />
-        <activity android:name=".ui.activity.HomeActivity" />
+        <activity android:name=".ui.activity.HomeActivity"
+            android:theme="@style/HomeTheme"/>
         <activity
             android:name=".ui.activity.PictureViewActivity"
             android:theme="@style/ImageTheme" />

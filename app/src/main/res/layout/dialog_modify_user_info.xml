@@ -4,7 +4,7 @@
     <LinearLayout
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_bg_white_radius_24"
+        android:background="@drawable/shape_bg_radius_24"
         android:orientation="vertical">
 
         <TextView
@@ -13,7 +13,7 @@
             android:gravity="center"
             android:padding="12dp"
             android:text="修改用户信息"
-            android:textColor="@color/green"
+            android:textColor="@color/dialog_title_color"
             android:textSize="16sp" />
 
         <View
@@ -29,7 +29,7 @@
             android:gravity="center"
             android:padding="12dp"
             android:text="修改头像"
-            android:textColor="@color/black"
+            android:textColor="@color/text_color"
             android:textSize="16sp" />
 
         <LinearLayout
@@ -48,7 +48,7 @@
                 android:gravity="center"
                 android:padding="12dp"
                 android:text="相册选择"
-                android:textColor="@color/black"
+                android:textColor="@color/text_color"
                 android:textSize="16sp" />
 
             <TextView
@@ -60,7 +60,7 @@
                 android:gravity="center"
                 android:padding="12dp"
                 android:text="相机拍照"
-                android:textColor="@color/black"
+                android:textColor="@color/text_color"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -77,7 +77,7 @@
             android:gravity="center"
             android:padding="12dp"
             android:text="修改昵称"
-            android:textColor="@color/black"
+            android:textColor="@color/text_color"
             android:textSize="16sp" />
 
         <View
@@ -93,7 +93,7 @@
             android:gravity="center"
             android:padding="12dp"
             android:text="修改简介"
-            android:textColor="@color/black"
+            android:textColor="@color/text_color"
             android:textSize="16sp" />
 
         <View
@@ -108,7 +108,7 @@
             android:gravity="center"
             android:padding="12dp"
             android:text="关闭"
-            android:textColor="@color/green"
+            android:textColor="@color/dialog_title_color"
             android:textSize="16sp" />
     </LinearLayout>
 </layout>

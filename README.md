@@ -5,6 +5,12 @@ MVVM-Demo
 ![下载图片](https://github.com/lilongweidev/MVVM-Demo/blob/master/apk/code.png)<br>
 
 
+## Step13
+
+Android MVVM框架使用（十三）UI更新 （App启动白屏优化、适配Android10.0深色模式）
+
+对应的apk:MVVM-Demo_13.apk
+
 ## Step12
 
 Android MVVM框架使用（十二）记事本功能增强：视图类型、批量删除、搜索笔记

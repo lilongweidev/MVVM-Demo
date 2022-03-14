@@ -42,7 +42,7 @@ public class EditActivity extends BaseActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_edit);
         viewModel = new ViewModelProvider(this).get(EditViewModel.class);
-        setStatusBar(true);
+        setStatusBar(!isNight());
         back(binding.toolbar);
 
         initView();

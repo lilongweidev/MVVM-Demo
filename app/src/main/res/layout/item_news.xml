@@ -16,7 +16,7 @@
 
     <RelativeLayout
         android:id="@+id/detail"
-        android:background="@color/white"
+        android:background="@color/theme_color_secondary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="@{() -> onClick.itemClick(news,detail)}"
@@ -32,7 +32,7 @@
             android:layout_alignParentStart="true"
             android:layout_toStartOf="@id/image"
             android:text="@{news.title}"
-            android:textColor="@color/black"
+            android:textColor="@color/text_color"
             android:textSize="14sp" />
 
         <com.llw.mvvm.view.CustomImageView
@@ -50,6 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/tv_date"
+            android:textColor="@color/text_color"
             android:layout_below="@+id/tv_title"
             android:layout_marginTop="4dp"
             android:text="@{news.author_name}"
@@ -61,6 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/image"
+            android:textColor="@color/text_color"
             android:text="@{news.date}"
             android:textSize="12sp" />
 

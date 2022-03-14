@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="name"
             type="String" />
@@ -38,9 +39,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:contentDescription="天气"
-                    android:src="@mipmap/ic_weather"
+                    android:src="@drawable/ic_weather"
                     android:visibility="gone"
-                    app:backgroundTint="@color/white"
+                    app:backgroundTint="@color/fab_bg_color"
                     app:fabSize="auto"
                     tools:ignore="UsingOnClickInXml" />
 
@@ -50,9 +51,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:contentDescription="城市"
-                    android:src="@mipmap/ic_city"
+                    android:src="@drawable/ic_city"
                     android:visibility="gone"
-                    app:backgroundTint="@color/white"
+                    app:backgroundTint="@color/fab_bg_color"
                     app:fabSize="auto"
                     tools:ignore="UsingOnClickInXml" />
             </LinearLayout>
@@ -65,7 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="end"
-            android:background="@color/white"
+            android:background="@color/theme_color_secondary"
             android:orientation="vertical">
 
             <RelativeLayout
@@ -74,28 +75,28 @@
                 <!--返回图标-->
                 <ImageView
                     android:id="@+id/iv_back"
-                    android:padding="12dp"
-                    android:visibility="gone"
-                    android:layout_centerVertical="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_back_black" />
+                    android:layout_centerVertical="true"
+                    android:padding="12dp"
+                    android:src="@mipmap/ic_back_black"
+                    android:visibility="gone" />
                 <!--父级行政区-->
                 <TextView
-                    android:layout_centerInParent="true"
                     android:id="@+id/tv_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
                     android:layout_gravity="center"
                     android:text="@{name}"
-                    android:textColor="@color/black"
+                    android:textColor="@color/text_color"
                     android:textSize="16sp" />
             </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/black" />
+                android:background="@color/text_color" />
 
             <!--城市列表-->
             <androidx.recyclerview.widget.RecyclerView

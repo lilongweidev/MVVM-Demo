@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="line">#EEE</color>
     <color name="gray">#878789</color>
 
     <color name="translucent">#90000000</color>
@@ -16,4 +10,29 @@
     <color name="search_gray">#EAEAEA</color><!--搜索框灰色-->
 
     <color name="green">#2EAD4D</color><!--要想代码过得去，主题就要带点绿-->
+
+    <color name="theme_color">#2EAD4D</color><!--主题颜色  用于标题栏、状态栏、导航栏、启动页背景-->
+    <color name="theme_color_secondary">@color/white</color><!--次主题颜色-->
+
+    <color name="color_primary">@color/theme_color</color>
+    <color name="color_primary_variant">@color/theme_color</color>
+    <color name="color_on_primary">@color/white</color>
+
+    <color name="color_secondary">@color/theme_color</color>
+    <color name="color_secondary_variant">@color/theme_color</color>
+    <color name="color_on_secondary">@color/black</color>
+
+    <color name="text_color">#FF000000</color><!--文字颜色-->
+    <color name="bg_color">@color/white</color><!--背景颜色-->
+    <color name="cursor_color">@color/theme_color</color><!--EditText 光标颜色-->
+    <color name="tab_color">@color/theme_color</color><!--TabLayout 文字、下划线颜色-->
+    <color name="bnv_bg_color">@color/white</color><!--BottomNavigationView 背景颜色 文字、下划线颜色-->
+    <color name="line">#EEE</color><!--分隔线颜色-->
+    <color name="about_bg_color">#F8F8F8</color><!--关于页面 背景颜色-->
+    <color name="dialog_title_color">@color/theme_color</color><!--弹窗标题 文字颜色-->
+    <color name="dialog_bg_color">@color/white</color><!--弹窗 背景颜色-->
+    <color name="fab_bg_color">@color/white</color>
+    <color name="fab_icon_color">@color/black</color>
+    <color name="bnv_check_color">#666666</color>
+
 </resources>

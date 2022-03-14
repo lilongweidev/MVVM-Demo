@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dp_4"
-        android:background="@drawable/shape_bg_white_radius_12"
+        android:background="@drawable/shape_bg_radius_12"
         android:foreground="?attr/selectableItemBackground"
         android:padding="12dp">
 
@@ -35,7 +35,7 @@
             android:ellipsize="end"
             android:singleLine="true"
             android:text="@{notebook.title}"
-            android:textColor="@color/black"
+            android:textColor="@color/text_color"
             android:textSize="16sp" />
 
         <TextView
@@ -47,7 +47,7 @@
             android:layout_toStartOf="@+id/iv_check"
             android:ellipsize="end"
             android:maxLines="3"
-            android:textColor="@color/dark_gray"
+            android:textColor="@color/text_color"
             android:text="@{notebook.content}"
             android:textSize="14sp" />
 
@@ -58,7 +58,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="6dp"
-            android:src="@{notebook.select ? ContextCompat.getDrawable(ivCheck.getContext(),R.mipmap.ic_selected) : ContextCompat.getDrawable(ivCheck.getContext(),R.mipmap.ic_select)}"
+            android:src="@{notebook.select ? @drawable/ic_selected_24dp : @drawable/ic_select_24dp}"
             android:visibility="@{isBatchDeletion ? View.VISIBLE : View.GONE}" />
     </RelativeLayout>
 </layout>

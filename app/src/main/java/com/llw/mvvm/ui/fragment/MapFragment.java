@@ -113,7 +113,6 @@ public class MapFragment extends BaseFragment implements AMap.OnMyLocationChange
         binding.mapView.onCreate(savedInstanceState);
         //显示加载弹窗
         showLoading();
-
         //点击按钮显示天气弹窗
         binding.fabWeather.setOnClickListener(v -> showWeatherDialog());
         //点击按钮显示城市弹窗
@@ -218,6 +217,8 @@ public class MapFragment extends BaseFragment implements AMap.OnMyLocationChange
         aMap.setMyLocationEnabled(true);// 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
         //设置SDK 自带定位消息监听
         aMap.setOnMyLocationChangeListener(this);
+        //设置地图是否为夜间模式
+        aMap.setMapType(isNight() ? AMap.MAP_TYPE_NIGHT : AMap.MAP_TYPE_NORMAL);
     }
 
     /**
@@ -425,7 +426,7 @@ public class MapFragment extends BaseFragment implements AMap.OnMyLocationChange
     @Override
     public void onSaveInstanceState(@NonNull @NotNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        binding.mapView.onSaveInstanceState(outState);
+//        binding.mapView.onSaveInstanceState(outState);
     }
 
     @Override

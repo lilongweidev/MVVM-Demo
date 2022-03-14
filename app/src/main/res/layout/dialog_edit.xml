@@ -4,7 +4,7 @@
     <RelativeLayout
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_bg_white_radius_12">
+        android:background="@drawable/shape_bg_radius_12">
 
         <TextView
             android:id="@+id/tv_title"
@@ -13,6 +13,7 @@
             android:gravity="center"
             android:padding="12dp"
             android:text="标题"
+            android:textColor="@color/dialog_title_color"
             android:textSize="16sp" />
 
         <androidx.appcompat.widget.AppCompatEditText
@@ -20,9 +21,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_title"
-            android:layout_margin="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
             android:maxLength="18"
             android:singleLine="true"
+            android:textCursorDrawable="@color/cursor_color"
+            android:textColor="@color/text_color"
             android:textSize="@dimen/sp_14" />
 
         <View
@@ -36,11 +42,12 @@
             android:id="@+id/tv_cancel"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:textSize="@dimen/sp_14"
             android:layout_below="@+id/v_line"
             android:foreground="?attr/selectableItemBackground"
             android:gravity="center"
-            android:text="取消" />
+            android:text="取消"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/sp_14" />
 
         <View
             android:layout_width="1dp"
@@ -58,7 +65,7 @@
             android:foreground="?attr/selectableItemBackground"
             android:gravity="center"
             android:text="确定"
-            android:textColor="@color/green"
+            android:textColor="@color/dialog_title_color"
             android:textSize="@dimen/sp_14" />
     </RelativeLayout>
 </layout>

@@ -3,12 +3,35 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/drawable-v24/icon_about.xml" value="0.1415" />
+        <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/drawable-v24/icon_logout.xml" value="0.1415" />
+        <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/drawable-v24/icon_settings.xml" value="0.1415" />
         <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/drawable-xhdpi/splash_bg.xml" value="0.1315" />
         <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/drawable/custom_cursor.xml" value="0.142" />
+        <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/drawable/ic_add_36dp.xml" value="0.1375" />
+        <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/drawable/ic_all_select_24dp.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/drawable/ic_all_selected_24dp.xml" value="0.1305" />
+        <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/drawable/ic_arrow_back.xml" value="0.1375" />
+        <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/drawable/ic_back_white.xml" value="0.136" />
+        <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/drawable/ic_delete_24dp.xml" value="0.1375" />
+        <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/drawable/ic_launcher_background.xml" value="0.136" />
+        <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/drawable/ic_ok_24dp.xml" value="0.1375" />
+        <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/drawable/ic_select_24dp.xml" value="0.1315" />
+        <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/drawable/ic_selected_24dp.xml" value="0.1315" />
+        <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/drawable/icon_back_black.xml" value="0.136" />
+        <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/drawable/icon_notebook.xml" value="0.136" />
+        <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/drawable/icon_open_black.xml" value="0.136" />
+        <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/drawable/shape_bg_radius_12.xml" value="0.2045" />
+        <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/drawable/shape_bg_white_radius_12.xml" value="0.136" />
+        <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/drawable/shape_bg_white_radius_24.xml" value="0.136" />
         <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/drawable/shape_bg_white_radius_6.xml" value="0.1595" />
+        <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/drawable/shape_line.xml" value="0.136" />
+        <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/drawable/shape_line_black.xml" value="0.136" />
+        <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/drawable/shape_search_bg.xml" value="0.136" />
+        <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/drawable/shape_translucent_radius_12.xml" value="0.136" />
         <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/layout/activity_about.xml" value="0.21354166666666666" />
         <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/layout/activity_edit.xml" value="0.21354166666666666" />
-        <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/layout/activity_home.xml" value="0.21354166666666666" />
+        <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/layout/activity_login.xml" value="0.21354166666666666" />
         <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/layout/activity_main.xml" value="0.21025641025641026" />
         <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/layout/activity_notebook.xml" value="0.21025641025641026" />
@@ -34,6 +57,9 @@
         <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/layout/nav_header.xml" value="0.21354166666666666" />
         <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/layout/news_fragment.xml" value="0.21354166666666666" />
         <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/layout/video_fragment.xml" value="0.21354166666666666" />
+        <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/menu/nav_menu.xml" value="0.21354166666666666" />
+        <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/menu/navigation_menu.xml" value="0.21354166666666666" />
+        <entry key="..\:/AndroidStudioProjects/MVVM-Demo/app/src/main/res/menu/notebook_settings.xml" value="0.21025641025641026" />
       </map>
     </option>
   </component>

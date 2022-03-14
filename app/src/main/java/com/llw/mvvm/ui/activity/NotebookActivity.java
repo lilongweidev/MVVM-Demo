@@ -77,7 +77,9 @@ public class NotebookActivity extends BaseActivity implements View.OnClickListen
      * 初始化
      */
     private void initView() {
-        setStatusBar(true);
+        //根据是否深色模式设置状态栏样式
+        setStatusBar(!isNight());
+
         binding.toolbar.setTitle("");
         setSupportActionBar(binding.toolbar);
         back(binding.toolbar);

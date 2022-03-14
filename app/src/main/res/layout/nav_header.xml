@@ -17,7 +17,7 @@
             android:id="@+id/lay_user_info"
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:background="@color/green">
+            android:background="@color/theme_color">
             <!--头像-->
             <com.llw.mvvm.view.CustomImageView
                 android:id="@+id/iv_avatar"
@@ -42,7 +42,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_toEndOf="@+id/iv_avatar"
                 android:text="@{homeViewModel.user.nickname ?? homeViewModel.defaultName}"
-                android:textColor="#FFF"
+                android:textColor="@color/white"
                 android:textSize="16sp" />
             <!--标签-->
             <TextView
@@ -53,7 +53,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_toEndOf="@+id/iv_avatar"
                 android:text="@{homeViewModel.user.introduction ?? homeViewModel.defaultIntroduction}"
-                android:textColor="#FFF"
+                android:textColor="@color/white"
                 android:textSize="14sp" />
         </RelativeLayout>
     </LinearLayout>

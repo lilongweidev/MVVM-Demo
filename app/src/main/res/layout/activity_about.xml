@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="@color/about_bg_color"
     android:orientation="vertical"
     tools:context=".ui.activity.AboutActivity">
 
@@ -12,7 +13,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/green"
+        android:background="@color/theme_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -33,7 +34,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/gray_white"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -49,14 +49,14 @@
             android:layout_marginTop="12dp"
             android:layout_marginBottom="80dp"
             android:text="MVVMDemo"
-            android:textColor="@color/black"
+            android:textColor="@color/text_color"
             android:textSize="18sp" />
 
         <LinearLayout
             android:id="@+id/lay_app_version"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:background="@color/theme_color_secondary"
             android:foreground="?android:attr/selectableItemBackground"
             android:gravity="center_vertical"
             android:padding="12dp">
@@ -67,7 +67,7 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:text="当前版本"
-                android:textColor="@color/black"
+                android:textColor="@color/text_color"
                 android:textSize="16sp" />
 
             <TextView
@@ -75,7 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:textColor="@color/black"
+                android:textColor="@color/text_color"
                 android:textSize="16dp" />
 
         </LinearLayout>
@@ -89,13 +89,13 @@
             android:id="@+id/tv_blog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:background="@color/theme_color_secondary"
             android:drawableRight="@drawable/icon_open_black"
             android:foreground="?android:attr/selectableItemBackground"
             android:gravity="center_vertical"
             android:padding="12dp"
             android:text="博客地址"
-            android:textColor="@color/black"
+            android:textColor="@color/text_color"
             android:textSize="16sp" />
 
         <View
@@ -107,13 +107,13 @@
             android:id="@+id/tv_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:background="@color/theme_color_secondary"
             android:drawableRight="@drawable/icon_open_black"
             android:foreground="?android:attr/selectableItemBackground"
             android:gravity="center_vertical"
             android:padding="12dp"
             android:text="源码地址"
-            android:textColor="@color/black"
+            android:textColor="@color/text_color"
             android:textSize="16sp" />
 
         <View
@@ -124,7 +124,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:background="@color/theme_color_secondary"
             android:gravity="center_vertical"
             android:padding="12dp">
 
@@ -134,7 +134,7 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:text="联系邮箱"
-                android:textColor="@color/black"
+                android:textColor="@color/text_color"
                 android:textSize="16sp" />
 
             <TextView
@@ -143,7 +143,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:text="lonelyholiday@qq.com"
-                android:textColor="@color/black"
+                android:textColor="@color/text_color"
                 android:textSize="16sp" />
 
         </LinearLayout>
@@ -154,9 +154,8 @@
         android:id="@+id/tv_author"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/gray_white"
         android:gravity="center"
         android:text="初学者-Study"
-        android:textColor="@color/black"
+        android:textColor="@color/text_color"
         android:textSize="@dimen/sp_14" />
 </LinearLayout>

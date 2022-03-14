@@ -35,6 +35,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/about_bg_color"
         android:fitsSystemWindows="true"
         android:orientation="vertical"
         tools:context=".ui.activity.NotebookActivity">
@@ -43,7 +44,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
+            android:background="@color/bg_color"
             app:navigationIcon="@drawable/icon_back_black">
 
             <TextView
@@ -52,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@{isBatchDeletion ? `未选择` : `记事本`}"
-                android:textColor="@color/black"
+                android:textColor="@color/text_color"
                 android:textSize="18sp"
                 android:textStyle="bold" />
         </androidx.appcompat.widget.Toolbar>
@@ -61,14 +62,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/toolbar"
-            android:background="@color/gray_white"
             android:orientation="vertical">
             <!--搜索笔记布局，有笔记时显示-->
             <LinearLayout
                 android:id="@+id/lay_search"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
-                android:background="@color/white"
+                android:background="@color/bg_color"
                 android:gravity="center_vertical"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
@@ -96,7 +96,7 @@
                         android:layout_marginEnd="32dp"
                         android:background="@null"
                         android:hint="搜索笔记"
-                        android:textColor="@color/black"
+                        android:textColor="@color/text_color"
                         android:textCursorDrawable="@drawable/custom_cursor"
                         android:textSize="@dimen/sp_14" />
 
@@ -138,7 +138,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:text="没有记录"
-                    android:textColor="@color/dark_gray"
+                    android:textColor="@color/text_color"
                     android:textSize="16sp" />
             </LinearLayout>
         </RelativeLayout>
@@ -153,14 +153,14 @@
             android:onClick="toEdit"
             android:src="@mipmap/icon_add"
             android:visibility="@{isBatchDeletion ? View.GONE : View.VISIBLE}"
-            app:backgroundTint="@color/white"
+            app:backgroundTint="@color/fab_bg_color"
             tools:ignore="UsingOnClickInXml" />
         <!--批量删除模式下显示的布局-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_alignParentBottom="true"
-            android:background="@color/white"
+            android:background="@color/dialog_bg_color"
             android:gravity="center_vertical"
             android:visibility="@{isBatchDeletion ? View.VISIBLE : View.GONE}">
 
@@ -169,20 +169,20 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:drawableTop="@mipmap/ic_delete"
+                android:drawableTop="@drawable/ic_delete_24dp"
                 android:gravity="center"
                 android:text="删除"
-                android:textColor="@color/black" />
+                android:textColor="@color/text_color" />
 
             <TextView
                 android:id="@+id/tv_all_selected"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:drawableTop="@{isAllSelected ? ContextCompat.getDrawable(tvAllSelected.getContext(),R.mipmap.ic_all_selected) : ContextCompat.getDrawable(tvAllSelected.getContext(),R.mipmap.ic_all_select)}"
+                android:drawableTop="@{isAllSelected ? @drawable/ic_all_selected_24dp : @drawable/ic_all_select_24dp}"
                 android:gravity="center"
                 android:text="@{isAllSelected ? `取消全选` : `全选`}"
-                android:textColor="@{isAllSelected ? @color/purple_500 : @color/black}" />
+                android:textColor="@{isAllSelected ? @color/green : @color/text_color}" />
         </LinearLayout>
     </RelativeLayout>
 </layout>

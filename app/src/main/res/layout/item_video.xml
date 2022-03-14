@@ -18,7 +18,7 @@
         android:id="@+id/detail"
         android:onClick="@{() -> onClick.itemClick(video,detail)}"
         android:foreground="?attr/selectableItemBackground"
-        android:background="@color/white"
+        android:background="@color/theme_color_secondary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="12dp"
@@ -34,7 +34,7 @@
             android:ellipsize="end"
             android:maxLines="2"
             android:text="@{video.title}"
-            android:textColor="@color/black"
+            android:textColor="@color/text_color"
             android:textSize="14sp" />
 
         <com.llw.mvvm.view.CustomImageView
@@ -64,6 +64,7 @@
             android:layout_below="@+id/tv_title"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="4dp"
+            android:textColor="@color/text_color"
             android:layout_toEndOf="@id/image"
             android:text="@{video.author}"
             android:textSize="12sp"
@@ -78,6 +79,7 @@
             android:layout_toEndOf="@id/image"
             android:ellipsize="end"
             android:maxLines="1"
+            android:textColor="@color/text_color"
             android:text="@{video.hot_words}"
             android:textSize="12sp" />
 

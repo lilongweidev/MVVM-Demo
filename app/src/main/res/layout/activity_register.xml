@@ -11,6 +11,7 @@
     </data>
 
     <LinearLayout
+        android:background="@color/theme_color_secondary"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -19,7 +20,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/green"
+            android:background="@color/theme_color"
             app:navigationIcon="@drawable/ic_back_white">
 
             <TextView
@@ -38,7 +39,7 @@
             android:gravity="center"
             android:padding="24dp"
             android:text="MVVM"
-            android:textColor="@color/green"
+            android:textColor="@color/dialog_title_color"
             android:textSize="48sp"
             android:textStyle="bold" />
 
@@ -57,7 +58,7 @@
                     android:id="@+id/et_account"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
+                    android:background="@color/theme_color_secondary"
                     android:hint="账号"
                     android:text="@={register.user.account}" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -70,7 +71,7 @@
                 android:layout_alignBottom="@+id/et_account_lay"
                 android:gravity="center"
                 android:text="*"
-                android:textColor="@color/green"
+                android:textColor="@color/dialog_title_color"
                 android:textSize="24sp" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -84,7 +85,7 @@
                     android:id="@+id/et_pwd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
+                    android:background="@color/theme_color_secondary"
                     android:hint="密码"
                     android:inputType="textPassword"
                     android:text="@={register.user.pwd}" />
@@ -98,7 +99,7 @@
                 android:layout_alignBottom="@+id/et_pwd_lay"
                 android:gravity="center"
                 android:text="*"
-                android:textColor="@color/green"
+                android:textColor="@color/dialog_title_color"
                 android:textSize="24sp" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -112,7 +113,7 @@
                     android:id="@+id/et_confirm_pwd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
+                    android:background="@color/theme_color_secondary"
                     android:hint="确认密码"
                     android:inputType="textPassword"
                     android:text="@={register.user.confirmPwd}" />
@@ -129,7 +130,7 @@
                     android:id="@+id/et_nickname_pwd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
+                    android:background="@color/theme_color_secondary"
                     android:hint="用户昵称"
                     android:text="@={register.user.nickname}" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -145,7 +146,7 @@
                     android:id="@+id/et_introduction"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
+                    android:background="@color/theme_color_secondary"
                     android:hint="用户简介"
                     android:text="@={register.user.introduction}" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -158,7 +159,7 @@
                 android:layout_alignBottom="@+id/et_confirm_pwd_lay"
                 android:gravity="center"
                 android:text="*"
-                android:textColor="@color/green"
+                android:textColor="@color/dialog_title_color"
                 android:textSize="24sp" />
 
             <com.google.android.material.button.MaterialButton
@@ -166,10 +167,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_below="@+id/et_introduction_lay"
-                android:layout_margin="48dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="48dp"
+                android:layout_marginEnd="48dp"
+                android:layout_marginBottom="48dp"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:text="注  册"
+                android:textColor="@color/white"
                 app:cornerRadius="12dp" />
 
             <TextView

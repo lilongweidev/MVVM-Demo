@@ -14,15 +14,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
+        android:background="@color/bg_color"
         tools:context=".ui.activity.EditActivity">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
-            app:navigationIcon="@mipmap/ic_edit_return">
-            <!--保存按钮-->
+            android:background="@color/bg_color"
+            app:navigationIcon="@drawable/ic_arrow_back">
+            <!--保存按钮 对-->
             <ImageView
                 android:id="@+id/iv_ok"
                 android:layout_width="36dp"
@@ -31,7 +32,7 @@
                 android:layout_marginEnd="16dp"
                 android:foreground="?attr/selectableItemBackground"
                 android:padding="4dp"
-                android:src="@mipmap/ic_black_ok"
+                android:src="@drawable/ic_ok_24dp"
                 android:visibility="gone" />
             <!--删除按钮-->
             <ImageView
@@ -42,7 +43,7 @@
                 android:layout_marginEnd="16dp"
                 android:foreground="?attr/selectableItemBackground"
                 android:padding="2dp"
-                android:src="@mipmap/ic_delete"
+                android:src="@drawable/ic_delete_24dp"
                 android:visibility="gone" />
         </androidx.appcompat.widget.Toolbar>
 
@@ -61,8 +62,8 @@
                 android:background="@null"
                 android:hint="标题"
                 android:text="@{notebook.title}"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/text_color"
                 android:textCursorDrawable="@drawable/custom_cursor"
                 android:textSize="36sp" />
 
@@ -75,6 +76,7 @@
                 android:cursorVisible="true"
                 android:gravity="top"
                 android:paddingTop="4dp"
+                android:textColor="@color/text_color"
                 android:text="@{notebook.content}"
                 android:textCursorDrawable="@drawable/custom_cursor" />
         </LinearLayout>

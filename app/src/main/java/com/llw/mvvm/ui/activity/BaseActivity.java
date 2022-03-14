@@ -1,5 +1,7 @@
 package com.llw.mvvm.ui.activity;
 
+import android.app.UiModeManager;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -180,5 +182,10 @@ public class BaseActivity extends AppCompatActivity {
         Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
         intent.setData(Uri.parse("package:" + getPackageName()));
         intentActivityResultLauncher.launch(intent);
+    }
+
+    protected boolean isNight() {
+        UiModeManager uiModeManager = (UiModeManager) context.getSystemService(Context.UI_MODE_SERVICE);
+        return uiModeManager.getNightMode() == UiModeManager.MODE_NIGHT_YES;
     }
 }

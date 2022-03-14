@@ -23,10 +23,13 @@ public class WebActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityWebBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_web);
+        ActivityWebBinding binding = ActivityWebBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         WebViewModel viewModel = new ViewModelProvider(this).get(WebViewModel.class);
         binding.webView.setWebViewClient(client);
-        setStatusBar(true);
+        setStatusBar(!isNight());
+        // enable:true(日间模式)，enable：false（夜间模式）
+        binding.webView.getSettingsExtension().setDayOrNight(!isNight());
         // 在调用TBS初始化、创建WebView之前进行如下配置
         String uniquekey = getIntent().getStringExtra("uniquekey");
         if (uniquekey != null) {

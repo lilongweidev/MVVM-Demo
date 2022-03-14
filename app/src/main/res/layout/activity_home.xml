@@ -13,7 +13,8 @@
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/theme_color_secondary">
         <!--主页面布局-->
         <RelativeLayout
             android:layout_width="match_parent"
@@ -25,7 +26,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/green">
+                android:background="@color/theme_color">
 
                 <!--圆形图片-->
                 <com.llw.mvvm.view.CustomImageView
@@ -66,7 +67,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:layout_alignParentBottom="true"
-                android:background="#FFF"
+                android:background="@color/bnv_bg_color"
+                app:itemIconTint="@color/bvn_color_selector"
+                app:itemTextColor="@color/bvn_color_selector"
                 app:menu="@menu/navigation_menu" />
 
         </RelativeLayout>
@@ -77,10 +80,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="start"
+            android:background="@color/theme_color_secondary"
             app:headerLayout="@layout/nav_header"
             app:itemIconSize="24dp"
-            app:itemIconTint="#000"
-            app:itemTextColor="#000"
+            app:itemIconTint="@color/text_color"
+            app:itemTextColor="@color/text_color"
             app:menu="@menu/nav_menu" />
 
     </androidx.drawerlayout.widget.DrawerLayout>

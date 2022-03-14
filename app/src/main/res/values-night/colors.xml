@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--深色模式下的颜色-->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="gray">#878789</color>
+
+    <color name="translucent">#90000000</color>
+    <color name="gray_white">#F8F8F8</color><!--灰白-->
+    <color name="dark_gray">#8A8A8A</color><!--深灰-->
+    <color name="search_gray">#212121</color><!--搜索框灰色-->
+
+    <color name="green">#2EAD4D</color><!--要想代码过得去，主题就要带点绿-->
+
+    <color name="theme_color">#111111</color><!--主题颜色  用于标题栏、状态栏、导航栏、启动页背景-->
+    <color name="theme_color_secondary">#181818</color><!--次主题颜色-->
+
+    <color name="color_primary">@color/theme_color</color>
+    <color name="color_primary_variant">@color/theme_color</color>
+    <color name="color_on_primary">#181818</color>
+
+    <color name="color_secondary">@color/theme_color</color>
+    <color name="color_secondary_variant">@color/theme_color</color>
+    <color name="color_on_secondary">#181818</color>
+
+    <color name="text_color">@color/white</color><!--文字颜色-->
+    <color name="bg_color">@color/theme_color</color><!--背景颜色-->
+    <color name="cursor_color">@color/white</color><!--EditText 光标颜色-->
+    <color name="tab_color">@color/white</color><!--TabLayout 文字、下划线颜色-->
+    <color name="bnv_bg_color">@color/theme_color</color><!--BottomNavigationView 背景颜色-->
+    <color name="line">#212121</color><!--分隔线颜色-->
+    <color name="about_bg_color">#171918</color><!--关于页面 背景颜色-->
+    <color name="dialog_title_color">@color/white</color><!--弹窗标题 文字颜色-->
+    <color name="dialog_bg_color">@color/theme_color_secondary</color><!--弹窗 背景颜色-->
+    <color name="fab_bg_color">@color/theme_color</color>
+    <color name="fab_icon_color">@color/white</color>
+    <color name="bnv_check_color">#AAAAAA</color>
+
+</resources>
