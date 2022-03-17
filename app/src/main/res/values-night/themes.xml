@@ -86,7 +86,7 @@
     <style name="loading_dialog" parent="android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowBackground">@drawable/shape_bg_radius_6</item>
+        <item name="android:windowBackground">@drawable/shape_bg_radius_24</item>
         <item name="android:windowIsFloating">true</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>

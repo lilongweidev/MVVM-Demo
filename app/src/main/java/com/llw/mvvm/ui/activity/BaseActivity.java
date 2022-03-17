@@ -124,6 +124,7 @@ public class BaseActivity extends AppCompatActivity {
      */
     protected void showLoading(boolean isClose) {
         loadingDialog = new LoadingDialog(this, isClose);
+        loadingDialog.show();
     }
 
     /**
